@@ -23,5 +23,11 @@ namespace NegozioPlusCore.MVVM.Principal
         {
             InitializeComponent();
         }
+
+
+
+      
+
+    
     }
 }

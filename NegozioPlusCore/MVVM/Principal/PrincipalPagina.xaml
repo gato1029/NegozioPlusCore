@@ -3,10 +3,97 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Principal"
+        xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Principal.VM" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="PrincipalPagina" Height="450" Width="800">
-    <Grid>
         
-    </Grid>
+        Title="PrincipalPagina" Height="450" Width="800" Background="{x:Null}">
+    <Window.DataContext>
+        <local:PrincipalPaginaVM/>
+    </Window.DataContext>
+    
+    <Border CornerRadius="0">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#7DBF44" Offset="1"/>
+                <GradientStop Color="#438B3F"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <StackPanel Orientation="Horizontal">
+            <Grid  x:Name="Barra"
+                HorizontalAlignment="Left"
+                Width="{Binding GridAncho, Mode=TwoWay}"                  
+                Visibility="Visible"                    
+                >
+                <!--Barra Lateral-->
+                <Grid.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#7DBF44"/>
+                        <GradientStop Color="#438B3F" Offset="1"/>
+                    </RadialGradientBrush>
+                </Grid.Background>
+                <Border  Margin="10,10,10,10" CornerRadius="5" BorderThickness="0.1" BorderBrush="#FF2B8343">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFFFD" Offset="1"/>
+                            <GradientStop Color="#DBDBDB"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    
+                </Border>
+
+                <syncfusion:SfNavigationDrawer
+                    x:Name="BarraIzquierda"                                              
+                    Margin="10"
+                    DisplayMemberPath="Item"
+                    IconMemberPath="Icon"
+                    DisplayMode="Expanded"                    
+                    ItemContainerStyle="{StaticResource SFItemStyle}"
+                    ItemsSource="{Binding Items}"                    
+                    FontSize="15" 
+                    Background="{x:Null}" DrawerBackground="{x:Null}" MinWidth="50"                                         
+                    >
+                    <syncfusion:SfNavigationDrawer.ToggleButtonIconTemplate>
+                        <DataTemplate>
+                            <Image
+                                x:Name="image"
+                                Width="25"
+                                Height="25"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Source="/Recursos/Imagenes/home.png" />
+                            
+                        </DataTemplate>
+                    </syncfusion:SfNavigationDrawer.ToggleButtonIconTemplate>
+                    <syncfusion:SfNavigationDrawer.ToggleButtonContentTemplate>
+                        <DataTemplate>
+                            <Label
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="Menu" /> 
+                        </DataTemplate>
+                    </syncfusion:SfNavigationDrawer.ToggleButtonContentTemplate>
+                    <behaviours:Interaction.Triggers>
+                        <behaviours:EventTrigger EventName="ItemClicked">
+                            <behaviours:InvokeCommandAction Command="{Binding ComandoClick}" PassEventArgsToCommand="True" />
+                        </behaviours:EventTrigger>
+                        <behaviours:EventTrigger EventName="Opened">
+                            <behaviours:InvokeCommandAction Command="{Binding ComandoHomeAbierto}" PassEventArgsToCommand="True" />
+                        </behaviours:EventTrigger>
+                        <behaviours:EventTrigger EventName="Closed">
+                            <behaviours:InvokeCommandAction Command="{Binding ComandoHomeCerrado}" PassEventArgsToCommand="True" />
+                        </behaviours:EventTrigger>
+                    </behaviours:Interaction.Triggers>
+                    
+                </syncfusion:SfNavigationDrawer>
+             
+            </Grid>
+            <!--Contenido-->
+            <Grid x:Name="Contenido"
+                Margin="10,10,10,10" HorizontalAlignment="Right" >
+               
+            </Grid>
+        </StackPanel>
+
+    </Border>
+
 </Window>
