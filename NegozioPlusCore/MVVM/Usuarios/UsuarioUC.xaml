@@ -1,0 +1,78 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Usuarios"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="NegozioPlusCore.MVVM.Usuarios.UsuarioUC"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1000" >
+
+    <Border>
+        <StackPanel RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <StackPanel.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF7DBF44" Offset="0"/>
+                    <GradientStop Color="#FF438B3F" Offset="1"/>
+                </RadialGradientBrush>
+            </StackPanel.Background>
+            <Grid Height="180" >
+                <Grid.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#7DBF44"/>
+                        <GradientStop Color="#438B3F" Offset="1"/>
+                    </RadialGradientBrush>
+                </Grid.Background>
+                <Border  Margin="10,10,10,10" CornerRadius="20" BorderThickness="0.1" BorderBrush="#FF2B8343"  >
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFFFD" Offset="1"/>
+                            <GradientStop Color="#DBDBDB"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FF539A40" />
+                    </Border.Effect>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Margin="20">
+                            <Image
+                                x:Name="image"
+                                Width="100"
+                                Height="100"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Source="/Recursos/Imagenes/users.png" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="20">
+                            <TextBlock Text="Usuarios" VerticalAlignment="Center"  FontSize="40" FontWeight="Bold" FontFamily="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"></TextBlock>
+                            <TextBlock AllowDrop="True" Text="Cree y administre los usuarios que le ayudaran a administrar su empresa." VerticalAlignment="Center" FontWeight="Light"  FontSize="20" FontFamily="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="20" >
+                            <Button BorderBrush="Transparent" Background="Transparent">
+                                <Image                                    
+                                x:Name="image2"
+                                Width="100"
+                                Height="100"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Source="/Recursos/Imagenes/agregar.png"/>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                </Border>
+            </Grid>
+            <Grid>
+                <syncfusion:SfTextInputLayout FontSize="40" IsEnabled="True"/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -95,8 +95,8 @@
             <Setter.Value>
                 <DataTemplate>
                     <Image
-                        Width="16"
-                        Height="16"
+                        Width="25"
+                        Height="25"
                         Source="{Binding}" />
                 </DataTemplate>
             </Setter.Value>
@@ -104,5 +104,7 @@
         <Setter Property="Icon" Value="{Binding Icon}" ></Setter>
         <Setter Property="DisplayMemberPath" Value="Item" ></Setter>
         <Setter Property="ItemsSource" Value="{Binding SubItems}" />
+        <Setter Property="Margin" Value="0,10,0,0"></Setter>
+        <Setter Property="FontFamily" Value="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"></Setter>
     </Style>
 </ResourceDictionary>
