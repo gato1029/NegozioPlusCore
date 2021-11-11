@@ -1,4 +1,5 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
+using NegozioPlusCore.Recursos;
 using NegozioPlusCore.Utilitarios;
 using Syncfusion.UI.Xaml.NavigationDrawer;
 using System;
@@ -15,21 +16,25 @@ namespace NegozioPlusCore.MVVM.Principal.VM
 {
     class PrincipalPaginaVM : NotificadorGenerico
     {
-        private ContentControl pagina;
+        private ObjetosMenu objetosMenu;
+        private ContentControl controlSeleccionado;
         private double gridAncho;
-        public ObservableCollection<MenuItem> Items { get; set; }      
+        public ObservableCollection<MenuItemParticular> Items { get; set; }      
         public ICommand ComandoClick => new RelayCommand<Object>(MenuItemClick, (o) => { return true; });
         public ICommand ComandoHomeAbierto => new RelayCommand<Object>(HomeAbiertoClick, (o) => { return true; });
         public ICommand ComandoHomeCerrado => new RelayCommand<Object>(HomeCerradoClick, (o) => { return true; });
 
         public PrincipalPaginaVM()
         {
-            Pagina = new ContentControl();
-            Items = new ObservableCollection<MenuItem>();
-            gridAncho = 280;
-            AgregarItems();
-            AgregarItems();
-            AgregarItems();
+            controlSeleccionado = new ContentControl();
+            Items = new ObservableCollection<MenuItemParticular>();
+            objetosMenu = ObjetosMenu.Instancia;
+            foreach (var item in objetosMenu.DiccionarioMenu)
+            {
+                Items.Add(item.Value);
+            }
+
+            gridAncho = 280;                        
         }
         private void HomeAbiertoClick(object obj)
         {
@@ -37,13 +42,13 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         }       
         private void HomeCerradoClick(object obj)
         {
-            GridAncho = 65;                        
+            GridAncho = 80;                        
         }
         
-        public ContentControl Pagina
+        public ContentControl ControlSeleccionado
         {
-            get { return this.pagina; }
-            set { SetValue(ref this.pagina, value); }
+            get { return this.controlSeleccionado; }
+            set { SetValue(ref this.controlSeleccionado, value); }
         }
         
         public double GridAncho
@@ -55,72 +60,45 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         private void MenuItemClick(object obj)
         {
             NavigationItemClickedEventArgs item = obj as NavigationItemClickedEventArgs;
-            MenuItem mi = item.Item.DataContext as MenuItem;
+            MenuItemParticular mi = item.Item.DataContext as MenuItemParticular;
             //obj?.GetType().Name
             //DataContext es el objeto al cual hace referencia
             if (mi.Item !=null)
             {
-                //obtengo el nombre del menu y tengo que buscarlo en el service locator
-                //saco el elemento o lo creo, todo ello en el serviceLocator
-            }
-
-            if (mi.Item == "Producto")
-            {
-              
-               
-                //pagina.Content = new ProductosVM();
-
-                // Pagina.NavigationService.Navigate( new ProductosPagina());
-                //Pagina.Navigate(new System.Uri("/Paginas/ProductosPagina.xaml", UriKind.RelativeOrAbsolute));
-            }
-            else
-            {
-           
-              
-                // pagina.Content = new VentasVM();
-
-
-                //  Pagina.NavigationService.Navigate(new VentasPagina());
-                //Pagina.Navigate(new System.Uri("/Paginas/VentasPagina.xaml",UriKind.RelativeOrAbsolute));
-            }
-
-        }
-
-
-        void AgregarItems()
-        {
-            MenuItem producto = new MenuItem
-            {
-                Item = "Producto",
-                Icon = "/Recursos/Imagenes/home.png",
-                Url = "pagina1"
-
-            };
-            ObservableCollection<MenuItem> SubItems = new ObservableCollection<MenuItem>();
-            SubItems.Add(new MenuItem() { Item = "item1", Icon = "/Recursos/Imagenes/home.png", Url = "pagina2" });
-            producto.SubItems = SubItems;
-            Items.Add(producto);
-        }
+                ControlSeleccionado.Content = objetosMenu.ItemMenuControl(mi.Item);
+            }      
+        } 
     }
-    public class MenuItem
+    public class MenuItemParticular
     {
-        public ObservableCollection<MenuItem> SubItems { get; set; }
-        
-        private string url;
+        public ObservableCollection<MenuItemParticular> SubItems { get; set; }
         private string item;
+        private object icon;
+
+        public MenuItemParticular()
+        {
+
+        }
+
+        public MenuItemParticular(string item, object icon)
+        {
+            this.item = item;
+            this.icon = icon;
+          
+        }
+
+        
         public string Item
         {
             get { return item; }
             set { item = value; }
         }
 
-        private object icon;
+        
         public object Icon
         {
             get { return icon; }
             set { icon = value; }
         }
-
-        public string Url { get => url; set => url = value; }
     }
 }

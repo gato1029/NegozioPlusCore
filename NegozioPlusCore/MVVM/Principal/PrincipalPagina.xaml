@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Principal.VM" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         
-        Title="PrincipalPagina" Height="450" Width="800" Background="{x:Null}">
+        Title="PrincipalPagina" Height="800" Width="1200" Background="{x:Null}" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
     <Window.DataContext>
         <local:PrincipalPaginaVM/>
     </Window.DataContext>
@@ -18,7 +18,11 @@
                 <GradientStop Color="#438B3F"/>
             </LinearGradientBrush>
         </Border.Background>
-        <StackPanel Orientation="Horizontal">
+        <Border.Effect>
+            <DropShadowEffect Color="#FF539A40" />
+        </Border.Effect>
+        <DockPanel LastChildFill="True"> 
+        <StackPanel Orientation="Horizontal" Margin="0,0,10,0" DockPanel.Dock="Left">
             <Grid  x:Name="Barra"
                 HorizontalAlignment="Left"
                 Width="{Binding GridAncho, Mode=TwoWay}"                  
@@ -31,35 +35,38 @@
                         <GradientStop Color="#438B3F" Offset="1"/>
                     </RadialGradientBrush>
                 </Grid.Background>
-                <Border  Margin="10,10,10,10" CornerRadius="5" BorderThickness="0.1" BorderBrush="#FF2B8343">
+                <Border  Margin="10,10,10,10" CornerRadius="20" BorderThickness="0.1" BorderBrush="#FF2B8343">
                     <Border.Background>
                         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                             <GradientStop Color="#FFFFFD" Offset="1"/>
                             <GradientStop Color="#DBDBDB"/>
                         </LinearGradientBrush>
                     </Border.Background>
-                    
-                </Border>
+                        <Border.Effect>
+                            <DropShadowEffect Color="#FF539A40" />
+                        </Border.Effect>
+                    </Border>
 
                 <syncfusion:SfNavigationDrawer
                     x:Name="BarraIzquierda"                                              
-                    Margin="10"
+                    Margin="20"
                     DisplayMemberPath="Item"
                     IconMemberPath="Icon"
                     DisplayMode="Expanded"                    
                     ItemContainerStyle="{StaticResource SFItemStyle}"
                     ItemsSource="{Binding Items}"                    
                     FontSize="15" 
+                    FontFamily="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"
                     Background="{x:Null}" DrawerBackground="{x:Null}" MinWidth="50"                                         
                     >
                     <syncfusion:SfNavigationDrawer.ToggleButtonIconTemplate>
                         <DataTemplate>
                             <Image
                                 x:Name="image"
-                                Width="25"
-                                Height="25"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
+                                Width="30"
+                                Height="30"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
                                 Source="/Recursos/Imagenes/home.png" />
                             
                         </DataTemplate>
@@ -87,13 +94,17 @@
                 </syncfusion:SfNavigationDrawer>
              
             </Grid>
-            <!--Contenido-->
-            <Grid x:Name="Contenido"
-                Margin="10,10,10,10" HorizontalAlignment="Right" >
-               
-            </Grid>
+        
         </StackPanel>
+            <!--Contenido-->
+            <StackPanel DockPanel.Dock="Right">
+                <ContentControl x:Name="ControlUsuario"
+                                Content="{Binding ControlSeleccionado}" Width="auto"/>
 
+            </StackPanel>
+        </DockPanel>
+        
+        
     </Border>
 
 </Window>
