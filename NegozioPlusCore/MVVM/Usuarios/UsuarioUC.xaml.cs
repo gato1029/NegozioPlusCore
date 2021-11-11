@@ -23,6 +23,7 @@ namespace NegozioPlusCore.MVVM.Usuarios
         public UsuarioUC()
         {
             InitializeComponent();
+            this.DataContext = new Usuarios.VM.UsuarioVM();
         }
     }
 }

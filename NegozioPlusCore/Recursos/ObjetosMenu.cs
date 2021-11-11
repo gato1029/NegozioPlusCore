@@ -75,7 +75,7 @@ namespace NegozioPlusCore.Recursos
             {
                 switch (itemMenu)
                 {
-                    case "Productos":
+                    case "Usuarios":
                         if (!ServiceLocator.Instance.ExistService<UsuarioUC>())
                         {
                             ServiceLocator.Instance.RegisterService(new UsuarioUC());                            

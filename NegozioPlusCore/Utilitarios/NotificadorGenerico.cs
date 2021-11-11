@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NegozioPlusCore.Utilitarios
 {
-    internal class NotificadorGenerico : INotifyPropertyChanged
+    public class NotificadorGenerico : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

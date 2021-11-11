@@ -134,6 +134,8 @@
     <Compile Include="MVVM\Usuarios\UsuarioUC.xaml.cs">
       <DependentUpon>UsuarioUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Usuarios\VM\UsuarioVM.cs" />
+    <Compile Include="MVVM\Usuarios\VM\UsuarioXAML.cs" />
     <Compile Include="Recursos\ObjetosMenu.cs" />
     <Compile Include="Utilitarios\NotificadorGenerico.cs" />
     <Compile Include="Utilitarios\ServiceLocator.cs" />

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Principal.VM" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         
-        Title="PrincipalPagina" Height="450" Width="800" Background="{x:Null}">
+        Title="PrincipalPagina" Height="800" Width="1200" Background="{x:Null}" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
     <Window.DataContext>
         <local:PrincipalPaginaVM/>
     </Window.DataContext>
