@@ -13,5 +13,9 @@ namespace NegozioPlusCore
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTMxMzc4QDMxMzkyZTMzMmUzMFl0Wkdtd1hROURpaGdSODJiNHFFM0tLamNNVmpBbGdYTWp0a0JTbTZ5eWs9");
+        }        
     }
 }

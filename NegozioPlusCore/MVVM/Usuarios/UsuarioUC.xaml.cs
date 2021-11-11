@@ -10,24 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NegozioPlusCore.MVVM.Principal
+namespace NegozioPlusCore.MVVM.Usuarios
 {
     /// <summary>
-    /// Lógica de interacción para PrincipalPagina.xaml
+    /// Lógica de interacción para UsuarioUC.xaml
     /// </summary>
-    public partial class PrincipalPagina : Window
+    public partial class UsuarioUC : UserControl
     {
-        public PrincipalPagina()
+        public UsuarioUC()
         {
             InitializeComponent();
+            this.DataContext = new Usuarios.VM.UsuarioVM();
         }
-
-
-
-      
-
-    
     }
 }
