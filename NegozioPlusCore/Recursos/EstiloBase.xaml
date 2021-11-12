@@ -107,4 +107,24 @@
         <Setter Property="Margin" Value="0,10,0,0"></Setter>
         <Setter Property="FontFamily" Value="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"></Setter>
     </Style>
+
+    <Style TargetType="syncfusion:GridRowHeaderCell">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="syncfusion:GridRowHeaderCell">
+                    <Border x:Name="PART_RowHeaderCellBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Text="{Binding RowIndex,RelativeSource={RelativeSource TemplatedParent}}"
+                                   TextAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
