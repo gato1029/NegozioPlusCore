@@ -15,11 +15,56 @@ namespace NegozioPlusCore.MVVM.Usuarios.VM
         public UsuarioVM()
         {
             Coleccion = new ObservableCollection<UsuarioXAML>();
-            Coleccion.Add(new UsuarioXAML("gato", "cat"));
+            Coleccion.Add(new UsuarioXAML("gatoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "cat"));
             Coleccion.Add(new UsuarioXAML("perro", "dog"));
             Coleccion.Add(new UsuarioXAML("pato",  "duck"));
             Coleccion.Add(new UsuarioXAML("perico","bird"));
-
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("gato", "cat"));
+            Coleccion.Add(new UsuarioXAML("perro", "dog"));
+            Coleccion.Add(new UsuarioXAML("pato", "duck"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("gato", "cat"));
+            Coleccion.Add(new UsuarioXAML("perro", "dog"));
+            Coleccion.Add(new UsuarioXAML("pato", "duck"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("gato", "cat"));
+            Coleccion.Add(new UsuarioXAML("perro", "dog"));
+            Coleccion.Add(new UsuarioXAML("pato", "duck"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("gato", "cat"));
+            Coleccion.Add(new UsuarioXAML("perro", "dog"));
+            Coleccion.Add(new UsuarioXAML("pato", "duck"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("gato", "cat"));
+            Coleccion.Add(new UsuarioXAML("perro", "dog"));
+            Coleccion.Add(new UsuarioXAML("pato", "duck"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("gato", "cat"));
+            Coleccion.Add(new UsuarioXAML("perro", "dog"));
+            Coleccion.Add(new UsuarioXAML("pato", "duck"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("gato", "cat"));
+            Coleccion.Add(new UsuarioXAML("perro", "dog"));
+            Coleccion.Add(new UsuarioXAML("pato", "duck"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("gato", "cat"));
+            Coleccion.Add(new UsuarioXAML("perro", "dog"));
+            Coleccion.Add(new UsuarioXAML("pato", "duck"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("gato", "cat"));
+            Coleccion.Add(new UsuarioXAML("perro", "dog"));
+            Coleccion.Add(new UsuarioXAML("pato", "duck"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
         }
 
       

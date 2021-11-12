@@ -64,7 +64,7 @@ namespace NegozioPlusCore.MVVM.Principal.VM
             //obj?.GetType().Name
             //DataContext es el objeto al cual hace referencia
             if (mi.Item !=null)
-            {
+            {               
                 ControlSeleccionado.Content = objetosMenu.ItemMenuControl(mi.Item);
             }      
         } 

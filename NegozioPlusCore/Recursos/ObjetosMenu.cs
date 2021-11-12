@@ -20,10 +20,12 @@ namespace NegozioPlusCore.Recursos
         private static ObjetosMenu _instancia;
 
         private readonly Dictionary<String, MenuItemParticular> _diccionarioMenu;
-        
+        private readonly Dictionary<String, MenuItemParticular> _diccionarioSubMenu;
+
         public ObjetosMenu()
         {
-            _diccionarioMenu = new Dictionary<String, MenuItemParticular>();            
+            _diccionarioMenu = new Dictionary<String, MenuItemParticular>();
+            _diccionarioSubMenu = new Dictionary<string, MenuItemParticular>();
             CargarItems();
         }
 
@@ -61,11 +63,13 @@ namespace NegozioPlusCore.Recursos
                     subMenu = new ObservableCollection<MenuItemParticular>();
                     subMenu.Add(menuItem);
                     menuPadre.SubItems = subMenu;
+                    _diccionarioSubMenu.Add(subMenuItem, menuItem);
                     return;
                 }                
                 if (!subMenu.Contains(menuItem))
                 {
                     subMenu.Add(menuItem);
+                    _diccionarioSubMenu.Add(subMenuItem, menuItem);
                 }                                                  
             }
         }
@@ -85,7 +89,21 @@ namespace NegozioPlusCore.Recursos
                         break;
                 }
             }
-            return null;
+            if (_diccionarioSubMenu.ContainsKey(itemMenu))
+            {
+                switch (itemMenu)
+                {
+                    case "Categorias":
+                        if (!ServiceLocator.Instance.ExistService<UsuarioUC>())
+                        {
+                            ServiceLocator.Instance.RegisterService(new UsuarioUC());
+                        }
+                        return ServiceLocator.Instance.GetService<UsuarioUC>();
+                    default:
+                        break;
+                }
+            }
+                return null;
         }
         public MenuItemParticular ItemMenu(string itemMenu)
         {
