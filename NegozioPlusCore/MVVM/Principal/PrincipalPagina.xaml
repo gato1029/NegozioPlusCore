@@ -6,8 +6,16 @@
         xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Principal.VM" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         
-        Title="PrincipalPagina" Height="800" Width="1200" Background="{x:Null}" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-    <Window.DataContext>
+        Title="PrincipalPagina" Height="800" Width="1200" Background="{x:Null}" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
+        SizeChanged="Window_SizeChanged"
+        
+        >
+    <behaviours:Interaction.Triggers>
+        <behaviours:EventTrigger EventName="SizeChanged">
+            <behaviours:InvokeCommandAction Command="{Binding ComandoVentanaCambioTam}" PassEventArgsToCommand="True" />
+        </behaviours:EventTrigger>
+    </behaviours:Interaction.Triggers>
+                    <Window.DataContext>
         <local:PrincipalPaginaVM/>
     </Window.DataContext>
     
@@ -99,7 +107,7 @@
             <!--Contenido-->
             <StackPanel DockPanel.Dock="Right">
                 <ContentControl x:Name="ControlUsuario"
-                                Content="{Binding ControlSeleccionado}" Width="auto"/>
+                                Content="{Binding ControlSeleccionado}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
 
             </StackPanel>
         </DockPanel>

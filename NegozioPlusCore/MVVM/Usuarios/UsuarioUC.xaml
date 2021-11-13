@@ -7,19 +7,28 @@
             xmlns:vm ="clr-namespace:NegozioPlusCore.MVVM.Usuarios.VM" 
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="1000" >
+             d:DesignHeight="800" d:DesignWidth="1000" HorizontalAlignment="Stretch"
+	VerticalAlignment="Stretch"
+	HorizontalContentAlignment="Stretch"
+	VerticalContentAlignment="Stretch">
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Transparent" Offset="0"/>
+            <GradientStop Color="Transparent" Offset="1"/>
+        </LinearGradientBrush>
+    </UserControl.Background>
+    <StackPanel>
 
+        <!--Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=ActualHeight}"-->
+        <!--ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" UseLayoutRounding="False" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"-->
 
-    <DockPanel LastChildFill="True">
+        <Grid>
 
-        <Grid >
-            <Grid.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#7DBF44"/>
-                    <GradientStop Color="#438B3F" Offset="1"/>
-                </RadialGradientBrush>
-            </Grid.Background>
-            <Border  Margin="10,10,10,10" CornerRadius="20" BorderThickness="0.1" BorderBrush="#FF2B8343"  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border  Grid.Row ="0" Margin="10,10,10,10" CornerRadius="20" BorderThickness="0.1" BorderBrush="#FF2B8343"  >
                 <Border.Background>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                         <GradientStop Color="#FFFFFD" Offset="1"/>
@@ -29,56 +38,60 @@
                 <Border.Effect>
                     <DropShadowEffect Color="#FF539A40" />
                 </Border.Effect>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="top" Margin="20">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <syncfusion:SfTextInputLayout x:Name="BuscarElemento"
-                                Grid.Row ="0"
-                                Hint="Buscar"
-                                Margin="10"
+                <syncfusion:SfTextInputLayout x:Name="BuscarElemento"                               
+                                Hint="Buscar"                                
                                 FontFamily="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"
-                                FontSize="15"   >
-                            <TextBox />
-                        </syncfusion:SfTextInputLayout>
-                        <Grid Grid.Row ="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <syncfusion:SfDataGrid 
-                                Grid.Row ="0"
+                                FontSize="15" 
+                                Margin="10,20,20,-5"  
+                                FocusedForeground="#FF539A40"
+                                FocusedBorderBrush="#FF539A40"
+                                             >
+                    <TextBox Margin="60,0,8,0" Padding="10" />
+                </syncfusion:SfTextInputLayout>
+            </Border>
+            <Border  Grid.Row ="1" Margin="10,10,10,10" CornerRadius="20" BorderThickness="0.1" BorderBrush="#FF2B8343"  >
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFFFD" Offset="1"/>
+                        <GradientStop Color="#DBDBDB"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Effect>
+                    <DropShadowEffect Color="#FF539A40" />
+                </Border.Effect>
+                <StackPanel  Orientation="Vertical">
+                    <syncfusion:SfDataGrid   
+                                
                                 AutoGenerateColumns="False"                        
                                 FontFamily="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"
                                 FontSize="15"                           
-                                AllowResizingColumns="False"
+                                AllowResizingColumns="True"
+                                AllowCollectionView="True"
+                                AllowDraggingColumns="True"
+                                AllowSorting="True"                        
                                 ScrollMode="Async"
                                 ShowRowHeader="True"
-                                ColumnSizer="Auto"
-                                ItemsSource="{Binding ElementName=dataPager,Path=PagedSource}">
-                                <syncfusion:SfDataGrid.Columns>
-                                    <syncfusion:GridTextColumn MappingName="Usuario"/>
-                                    <syncfusion:GridTextColumn MappingName="Nombre"/>
-                                </syncfusion:SfDataGrid.Columns>
-                            </syncfusion:SfDataGrid>
-                            <syncfusion:SfDataPager x:Name="dataPager"
-                                Grid.Row="1"
-                                PageSize="20"
+                                ColumnSizer="Auto"              
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                SelectionUnit="Any"
+                                SelectionMode="Extended"
+                                Margin="10"       
+                                MaxHeight="{Binding AltoGridDatos, Mode=TwoWay}"
+                                ItemsSource="{Binding ElementName=dataPager,Path=PagedSource}" >
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:GridTextColumn MappingName="Usuario"/>
+                            <syncfusion:GridTextColumn MappingName="Nombre"/>
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                    <syncfusion:SfDataPager x:Name="dataPager"     
+                                      
+                                PageSize="50"
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 Source="{Binding Coleccion}"/>
-                        </Grid>
-                    </Grid>
-
                 </StackPanel>
-
             </Border>
-
         </Grid>
-
-
-    </DockPanel>
-
+    </StackPanel>
 </UserControl>

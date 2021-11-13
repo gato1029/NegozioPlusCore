@@ -3,15 +3,9 @@ using NegozioPlusCore.Recursos;
 using NegozioPlusCore.Utilitarios;
 using Syncfusion.UI.Xaml.NavigationDrawer;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-
 namespace NegozioPlusCore.MVVM.Principal.VM
 {
     class PrincipalPaginaVM : NotificadorGenerico
@@ -19,10 +13,14 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         private ObjetosMenu objetosMenu;
         private ContentControl controlSeleccionado;
         private double gridAncho;
+
+        public static event EventHandler<PrincipalPagina> EventoResizarVentana;
         public ObservableCollection<MenuItemParticular> Items { get; set; }      
         public ICommand ComandoClick => new RelayCommand<Object>(MenuItemClick, (o) => { return true; });
         public ICommand ComandoHomeAbierto => new RelayCommand<Object>(HomeAbiertoClick, (o) => { return true; });
         public ICommand ComandoHomeCerrado => new RelayCommand<Object>(HomeCerradoClick, (o) => { return true; });
+        public ICommand ComandoVentanaCambioTam => new RelayCommand<Object>(VentanaCambioTam, (o) => { return true; });
+        
 
         public PrincipalPaginaVM()
         {
@@ -56,7 +54,10 @@ namespace NegozioPlusCore.MVVM.Principal.VM
             get { return this.gridAncho; }
             set { SetValue(ref this.gridAncho, value); }
         }
-
+        private void VentanaCambioTam(object obj)
+        {
+            EventoResizarVentana?.Invoke(this,ServiceLocator.Instance.GetService<PrincipalPagina>());
+        }   
         private void MenuItemClick(object obj)
         {
             NavigationItemClickedEventArgs item = obj as NavigationItemClickedEventArgs;
@@ -66,9 +67,11 @@ namespace NegozioPlusCore.MVVM.Principal.VM
             if (mi.Item !=null)
             {               
                 ControlSeleccionado.Content = objetosMenu.ItemMenuControl(mi.Item);
+                
             }      
         } 
     }
+ 
     public class MenuItemParticular
     {
         public ObservableCollection<MenuItemParticular> SubItems { get; set; }

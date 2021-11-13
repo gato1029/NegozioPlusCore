@@ -1,5 +1,4 @@
-﻿using NegozioPlusCore.Utilitarios;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,24 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NegozioPlusCore.MVVM.Principal
+namespace NegozioPlusCore.MVVM.Usuarios
 {
     /// <summary>
-    /// Lógica de interacción para PrincipalPagina.xaml
+    /// Lógica de interacción para UsuariosPage.xaml
     /// </summary>
-    public partial class PrincipalPagina : Window
+    public partial class UsuariosPage : Page
     {
-        public PrincipalPagina()
+        public UsuariosPage()
         {
             InitializeComponent();
-            ServiceLocator.Instance.RegisterService<PrincipalPagina>(this);
-        }
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-
         }
     }
 }
