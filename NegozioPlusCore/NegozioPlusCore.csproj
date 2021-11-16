@@ -58,8 +58,8 @@
     <Reference Include="Syncfusion.Data.WPF, Version=19.3460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.Data.WPF.19.3.0.48\lib\net46\Syncfusion.Data.WPF.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Licensing, Version=19.3460.0.48, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
-      <HintPath>packages\Syncfusion.Licensing.19.3.0.48\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    <Reference Include="Syncfusion.Licensing, Version=19.3460.0.53, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Licensing.19.3.0.53\lib\net46\Syncfusion.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.WPF, Version=19.3460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.SfChart.WPF.19.3.0.48\lib\net46\Syncfusion.SfChart.WPF.dll</HintPath>
@@ -75,6 +75,9 @@
       <HintPath>packages\Syncfusion.SfSkinManager.WPF.19.3.0.48\lib\net46\Syncfusion.SfSkinManager.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfTextInputLayout.WPF, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Shared.Base, Version=19.3460.0.53, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.Shared.Base.19.3.0.53\lib\net46\Syncfusion.Shared.Base.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Shared.WPF, Version=19.3460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.Shared.WPF.19.3.0.48\lib\net46\Syncfusion.Shared.WPF.dll</HintPath>
     </Reference>
@@ -131,6 +134,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MVVM\Almacen\Almacen.xaml.cs">
+      <DependentUpon>Almacen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Almacen\AlmacenAgregar.xaml.cs">
+      <DependentUpon>AlmacenAgregar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Almacen\VM\AlmacenVM.cs" />
+    <Compile Include="MVVM\Almacen\VM\AlmacenXAML.cs" />
+    <Compile Include="MVVM\Categorias\Categorias.xaml.cs">
+      <DependentUpon>Categorias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Categorias\VM\CategoriasVM.cs" />
+    <Compile Include="MVVM\Categorias\VM\CategoriasXAML.cs" />
+    <Compile Include="MVVM\Productos\Producto.xaml.cs">
+      <DependentUpon>Producto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Productos\VM\ProductoVM.cs" />
+    <Compile Include="MVVM\Productos\VM\ProductoXAML.cs" />
+    <Compile Include="MVVM\Tiendas\Tiendas.xaml.cs">
+      <DependentUpon>Tiendas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Tiendas\VM\TiendasVM.cs" />
+    <Compile Include="MVVM\Tiendas\VM\TiendasXAML.cs" />
     <Compile Include="MVVM\Usuarios\UsuarioUC.xaml.cs">
       <DependentUpon>UsuarioUC.xaml</DependentUpon>
     </Compile>
@@ -151,7 +177,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\Almacen\Almacen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Almacen\AlmacenAgregar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Categorias\Categorias.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MVVM\Principal\PrincipalPagina.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Productos\Producto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Tiendas\Tiendas.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

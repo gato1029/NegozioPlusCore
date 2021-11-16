@@ -19,7 +19,7 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         private ObjetosMenu objetosMenu;
         private ContentControl controlSeleccionado;
         private double gridAncho;
-        public ObservableCollection<MenuItemParticular> Items { get; set; }      
+        public ObservableCollection<MenuItemParticular> Items { get; set; }
         public ICommand ComandoClick => new RelayCommand<Object>(MenuItemClick, (o) => { return true; });
         public ICommand ComandoHomeAbierto => new RelayCommand<Object>(HomeAbiertoClick, (o) => { return true; });
         public ICommand ComandoHomeCerrado => new RelayCommand<Object>(HomeCerradoClick, (o) => { return true; });
@@ -34,25 +34,25 @@ namespace NegozioPlusCore.MVVM.Principal.VM
                 Items.Add(item.Value);
             }
 
-            gridAncho = 280;                        
+            gridAncho = 280;
         }
         private void HomeAbiertoClick(object obj)
         {
-            GridAncho = 280;                        
-        }       
+            GridAncho = 280;
+        }
         private void HomeCerradoClick(object obj)
         {
-            GridAncho = 80;                        
+            GridAncho = 80;
         }
-        
+
         public ContentControl ControlSeleccionado
         {
             get { return this.controlSeleccionado; }
             set { SetValue(ref this.controlSeleccionado, value); }
         }
-        
+
         public double GridAncho
-        {            
+        {
             get { return this.gridAncho; }
             set { SetValue(ref this.gridAncho, value); }
         }
@@ -63,11 +63,11 @@ namespace NegozioPlusCore.MVVM.Principal.VM
             MenuItemParticular mi = item.Item.DataContext as MenuItemParticular;
             //obj?.GetType().Name
             //DataContext es el objeto al cual hace referencia
-            if (mi.Item !=null)
+            if (mi.Item != null)
             {
                 ControlSeleccionado.Content = objetosMenu.ItemMenuControl(mi.Item);
-            }      
-        } 
+            }
+        }
     }
     public class MenuItemParticular
     {
@@ -84,17 +84,17 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         {
             this.item = item;
             this.icon = icon;
-          
+
         }
 
-        
+
         public string Item
         {
             get { return item; }
             set { item = value; }
         }
 
-        
+
         public object Icon
         {
             get { return icon; }
