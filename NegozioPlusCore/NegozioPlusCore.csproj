@@ -137,6 +137,9 @@
     <Compile Include="MVVM\Usuarios\UsuarioUC.xaml.cs">
       <DependentUpon>UsuarioUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Usuarios\UsuarioVentana.xaml.cs">
+      <DependentUpon>UsuarioVentana.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\Usuarios\VM\UsuarioVM.cs" />
     <Compile Include="MVVM\Usuarios\VM\UsuarioXAML.cs" />
     <Compile Include="Recursos\ObjetosMenu.cs" />
@@ -163,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Usuarios\UsuarioUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Usuarios\UsuarioVentana.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -246,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Recursos\Imagenes\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\cerrar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Fody.6.5.3\build\Fody.targets" Condition="Exists('packages\Fody.6.5.3\build\Fody.targets')" />

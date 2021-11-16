@@ -27,6 +27,28 @@
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="FontWeight" Value="Light" />
     </Style>
+    <Style x:Key="FuenteBaseTextInput" TargetType="syncfusion:SfTextInputLayout">
+        <Setter Property="FontFamily" Value="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontWeight" Value="Light" />
+        <Setter Property="FocusedBorderBrush" Value="#78A2D2" />
+        <Setter Property="FocusedForeground" Value="#78A2D2" />
+    </Style>
+
+    <!--#region TextoInput-->
+    <Style
+        x:Key="BuscarTextInput"
+        BasedOn="{StaticResource FuenteBaseTextInput}"
+        TargetType="syncfusion:SfTextInputLayout" />
+    <Style
+        x:Key="NormalTextInput"
+        BasedOn="{StaticResource FuenteBaseTextInput}"
+        TargetType="syncfusion:SfTextInputLayout">
+        <Setter Property="ContainerBackground" Value="White" />
+    </Style>
+    <!--#endregion-->
+
     <!--#region BotonImagen-->
     <Style
         x:Key="BotonImagen"
@@ -163,6 +185,12 @@
         BasedOn="{StaticResource BotonImagenEfecto}"
         TargetType="Image">
         <Setter Property="Source" Value="/Recursos/Imagenes/mini.png" />
+    </Style>
+    <Style
+        x:Key="ImgBotonCerrar"
+        BasedOn="{StaticResource BotonImagenEfecto}"
+        TargetType="Image">
+        <Setter Property="Source" Value="/Recursos/Imagenes/cerrar.png" />
     </Style>
     <Style
         x:Key="ImgBotonAgregar"

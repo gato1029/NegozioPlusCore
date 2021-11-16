@@ -88,12 +88,9 @@
                         Margin="5,20,0,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        FocusedBorderBrush="#78A2D2"
-                        FocusedForeground="#78A2D2"
-                        FontFamily="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"
-                        FontSize="15"
                         Hint="Buscar Usuario"
-                        HintFloatMode="None">
+                        HintFloatMode="None"
+                        Style="{DynamicResource BuscarTextInput}">
                         <TextBox Padding="10" />
                     </syncfusion:SfTextInputLayout>
 
@@ -102,6 +99,7 @@
                         Grid.Column="3"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
+                        Command="{Binding ComandoClickAgregar}"
                         Style="{DynamicResource BotonImagen}">
                         <Image Style="{DynamicResource ImgBotonAgregar}" />
                     </Button>
