@@ -4,6 +4,7 @@ using NegozioPlusCore.Utilitarios;
 using Syncfusion.UI.Xaml.NavigationDrawer;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 namespace NegozioPlusCore.MVVM.Principal.VM
@@ -14,7 +15,7 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         private ContentControl controlSeleccionado;
         private double gridAncho;
 
-        public static event EventHandler<PrincipalPagina> EventoResizarVentana;
+        public static event EventHandler<Window> EventoResizarVentana;
         public ObservableCollection<MenuItemParticular> Items { get; set; }      
         public ICommand ComandoClick => new RelayCommand<Object>(MenuItemClick, (o) => { return true; });
         public ICommand ComandoHomeAbierto => new RelayCommand<Object>(HomeAbiertoClick, (o) => { return true; });
@@ -32,11 +33,11 @@ namespace NegozioPlusCore.MVVM.Principal.VM
                 Items.Add(item.Value);
             }
 
-            gridAncho = 280;                        
+            gridAncho = 290;                        
         }
         private void HomeAbiertoClick(object obj)
         {
-            GridAncho = 280;                        
+            GridAncho = 290;                        
         }       
         private void HomeCerradoClick(object obj)
         {
@@ -56,19 +57,27 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         }
         private void VentanaCambioTam(object obj)
         {
-            EventoResizarVentana?.Invoke(this,ServiceLocator.Instance.GetService<PrincipalPagina>());
+            EventoResizarVentana?.Invoke(this,ServiceLocator.Instance.GetService<Window>());
         }   
         private void MenuItemClick(object obj)
         {
             NavigationItemClickedEventArgs item = obj as NavigationItemClickedEventArgs;
-            MenuItemParticular mi = item.Item.DataContext as MenuItemParticular;
-            //obj?.GetType().Name
-            //DataContext es el objeto al cual hace referencia
-            if (mi.Item !=null)
-            {               
-                ControlSeleccionado.Content = objetosMenu.ItemMenuControl(mi.Item);
-                
-            }      
+            if (item!=null)
+            {
+                MenuItemParticular mi = item.Item.DataContext as MenuItemParticular;
+                if (mi!=null)
+                {
+                    //obj?.GetType().Name
+                    //DataContext es el objeto al cual hace referencia
+                    if (mi.Item != null)
+                    {
+                        ControlSeleccionado.Content = objetosMenu.ItemMenuControl(mi.Item);
+
+                    }
+                }
+               
+            }
+          
         } 
     }
  

@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace NegozioPlusCore.MVVM.Usuarios.VM
@@ -70,11 +71,56 @@ namespace NegozioPlusCore.MVVM.Usuarios.VM
             Coleccion.Add(new UsuarioXAML("pato", "duck"));
             Coleccion.Add(new UsuarioXAML("perico", "bird"));
             Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird")); Coleccion.Add(new UsuarioXAML("perico", "bird"));
+            Coleccion.Add(new UsuarioXAML("perico", "bird"));
         }
 
-        private void PrincipalPaginaVM_EventoResizarVentana(object sender, PrincipalPagina e)
+        private void PrincipalPaginaVM_EventoResizarVentana(object sender, Window e)
         {
-            AltoGridDatos = e.Height - 220;            
+            AltoGridDatos = e.Height - 220;
+            
         }
 
         public double AltoGridDatos

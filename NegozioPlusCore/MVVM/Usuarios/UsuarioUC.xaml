@@ -1,97 +1,175 @@
 ﻿<UserControl
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             x:Class="NegozioPlusCore.MVVM.Usuarios.UsuarioUC"
-            xmlns:vm ="clr-namespace:NegozioPlusCore.MVVM.Usuarios.VM" 
-             xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
-             mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="1000" HorizontalAlignment="Stretch"
-	VerticalAlignment="Stretch"
-	HorizontalContentAlignment="Stretch"
-	VerticalContentAlignment="Stretch">
-    <UserControl.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="Transparent" Offset="0"/>
-            <GradientStop Color="Transparent" Offset="1"/>
-        </LinearGradientBrush>
-    </UserControl.Background>
-    <StackPanel>
+    x:Class="NegozioPlusCore.MVVM.Usuarios.UsuarioUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:vm="[vm ]clr-namespace:NegozioPlusCore.MVVM.Usuarios.VM"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch"
+    HorizontalContentAlignment="Stretch"
+    VerticalContentAlignment="Stretch"
+    d:DesignHeight="800"
+    d:DesignWidth="1000"
+    mc:Ignorable="d">
 
-        <!--Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=ActualHeight}"-->
-        <!--ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" UseLayoutRounding="False" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"-->
 
-        <Grid>
+    <DockPanel>
+        <StackPanel Margin="20" DockPanel.Dock="Top">
+            <Border Height="120" CornerRadius="10">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="300" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        x:Name="image"
+                        Grid.Column="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Stretch"
+                        Style="{DynamicResource ImgUsuarios}" />
+                    <StackPanel
+                        Grid.Column="1"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Orientation="Vertical">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="40"
+                            FontWeight="Bold"
+                            Style="{DynamicResource FuenteBaseTextBlock}"
+                            Text="Usuarios" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            FontWeight="Light"
+                            Style="{DynamicResource FuenteBaseTextBlock}"
+                            Text="Cree y administre los usuarios que le ayudaran a administrar su empresa."
+                            TextWrapping="Wrap" />
+                    </StackPanel>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Border  Grid.Row ="0" Margin="10,10,10,10" CornerRadius="20" BorderThickness="0.1" BorderBrush="#FF2B8343"  >
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                        <GradientStop Color="#FFFFFD" Offset="1"/>
-                        <GradientStop Color="#DBDBDB"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Border.Effect>
-                    <DropShadowEffect Color="#FF539A40" />
-                </Border.Effect>
-                <syncfusion:SfTextInputLayout x:Name="BuscarElemento"                               
-                                Hint="Buscar"                                
-                                FontFamily="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"
-                                FontSize="15" 
-                                Margin="10,20,20,-5"  
-                                FocusedForeground="#FF539A40"
-                                FocusedBorderBrush="#FF539A40"
-                                             >
-                    <TextBox Margin="60,0,8,0" Padding="10" />
-                </syncfusion:SfTextInputLayout>
+                </Grid>
             </Border>
-            <Border  Grid.Row ="1" Margin="10,10,10,10" CornerRadius="20" BorderThickness="0.1" BorderBrush="#FF2B8343"  >
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                        <GradientStop Color="#FFFFFD" Offset="1"/>
-                        <GradientStop Color="#DBDBDB"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Border.Effect>
-                    <DropShadowEffect Color="#FF539A40" />
-                </Border.Effect>
-                <StackPanel  Orientation="Vertical">
-                    <syncfusion:SfDataGrid   
-                                
-                                AutoGenerateColumns="False"                        
-                                FontFamily="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"
-                                FontSize="15"                           
-                                AllowResizingColumns="True"
-                                AllowCollectionView="True"
-                                AllowDraggingColumns="True"
-                                AllowSorting="True"                        
-                                ScrollMode="Async"
-                                ShowRowHeader="True"
-                                ColumnSizer="Auto"              
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                SelectionUnit="Any"
-                                SelectionMode="Extended"
-                                Margin="10"       
-                                MaxHeight="{Binding AltoGridDatos, Mode=TwoWay}"
-                                ItemsSource="{Binding ElementName=dataPager,Path=PagedSource}" >
-                        <syncfusion:SfDataGrid.Columns>
-                            <syncfusion:GridTextColumn MappingName="Usuario"/>
-                            <syncfusion:GridTextColumn MappingName="Nombre"/>
-                        </syncfusion:SfDataGrid.Columns>
-                    </syncfusion:SfDataGrid>
-                    <syncfusion:SfDataPager x:Name="dataPager"     
-                                      
-                                PageSize="50"
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Center"
-                                Source="{Binding Coleccion}"/>
-                </StackPanel>
-            </Border>
-        </Grid>
-    </StackPanel>
+        </StackPanel>
+
+        <Border
+            Margin="30"
+            CornerRadius="15"
+            DockPanel.Dock="Bottom"
+            Style="{DynamicResource BorderFondoBase}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Image
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Style="{DynamicResource ImgBuscar}" />
+                    <syncfusion:SfTextInputLayout
+                        x:Name="BuscarElemento"
+                        Grid.Column="1"
+                        Margin="5,20,0,0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        FocusedBorderBrush="#78A2D2"
+                        FocusedForeground="#78A2D2"
+                        FontFamily="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS"
+                        FontSize="15"
+                        Hint="Buscar Usuario"
+                        HintFloatMode="None">
+                        <TextBox Padding="10" />
+                    </syncfusion:SfTextInputLayout>
+
+
+                    <Button
+                        Grid.Column="3"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Style="{DynamicResource BotonImagen}">
+                        <Image Style="{DynamicResource ImgBotonAgregar}" />
+                    </Button>
+                    <Button
+                        Grid.Column="4"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Style="{DynamicResource BotonImagen}">
+                        <Image Style="{DynamicResource ImgBotonModificar}" />
+                    </Button>
+                    <Button
+                        Grid.Column="5"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Style="{DynamicResource BotonImagen}">
+                        <Image Style="{DynamicResource ImgBotonEliminar}" />
+                    </Button>
+                </Grid>
+                <Border
+                    Grid.Row="1"
+                    Margin="30"
+                    CornerRadius="10"
+                    Style="{DynamicResource BorderFondoDegradoBlanco}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <syncfusion:SfDataGrid
+                            Grid.Row="0"
+                            Margin="10,10,10,10"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            AllowCollectionView="True"
+                            AllowDraggingColumns="True"
+                            AllowFiltering="True"
+                            AllowResizingColumns="True"
+                            AllowSorting="True"
+                            AutoGenerateColumns="False"
+                            BorderBrush="Transparent"
+                            ColumnSizer="Star"
+                            HeaderLinesVisibility="Both"
+                            ItemsSource="{Binding ElementName=dataPager, Path=PagedSource}"
+                            ScrollMode="Async"
+                            SelectionMode="Extended"
+                            SelectionUnit="Any"
+                            ShowRowHeader="True"
+                            Style="{DynamicResource DataGrid}">
+                            <syncfusion:SfDataGrid.Columns>
+                                <syncfusion:GridTextColumn MappingName="Usuario" />
+                                <syncfusion:GridTextColumn MappingName="Nombre" />
+                            </syncfusion:SfDataGrid.Columns>
+                        </syncfusion:SfDataGrid>
+                        <syncfusion:SfDataPager
+                            x:Name="dataPager"
+                            Grid.Row="1"
+                            Margin="0,0,0,20"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal"
+                            PageSize="50"
+                            Source="{Binding Coleccion}" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+    </DockPanel>
+
 </UserControl>
