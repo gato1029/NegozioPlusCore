@@ -39,7 +39,7 @@ namespace NegozioPlusCore.Utilitarios
             var type = typeof(T);
             if (_services.ContainsKey(type))
             {
-                _services.Add(type, service);
+                _services[type] = service;                
             }
         }
         public void RemoveService<T>()
