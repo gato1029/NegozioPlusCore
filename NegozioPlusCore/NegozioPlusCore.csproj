@@ -134,31 +134,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MVVM\Almacen\Almacen.xaml.cs">
-      <DependentUpon>Almacen.xaml</DependentUpon>
+    <Compile Include="MVVM\Principal\VentanaPrincipal.xaml.cs">
+      <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Almacen\AlmacenAgregar.xaml.cs">
-      <DependentUpon>AlmacenAgregar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Almacen\VM\AlmacenVM.cs" />
-    <Compile Include="MVVM\Almacen\VM\AlmacenXAML.cs" />
-    <Compile Include="MVVM\Categorias\Categorias.xaml.cs">
-      <DependentUpon>Categorias.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Categorias\VM\CategoriasVM.cs" />
-    <Compile Include="MVVM\Categorias\VM\CategoriasXAML.cs" />
-    <Compile Include="MVVM\Productos\Producto.xaml.cs">
-      <DependentUpon>Producto.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Productos\VM\ProductoVM.cs" />
-    <Compile Include="MVVM\Productos\VM\ProductoXAML.cs" />
-    <Compile Include="MVVM\Tiendas\Tiendas.xaml.cs">
-      <DependentUpon>Tiendas.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Tiendas\VM\TiendasVM.cs" />
-    <Compile Include="MVVM\Tiendas\VM\TiendasXAML.cs" />
     <Compile Include="MVVM\Usuarios\UsuarioUC.xaml.cs">
       <DependentUpon>UsuarioUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Usuarios\UsuarioVentana.xaml.cs">
+      <DependentUpon>UsuarioVentana.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Usuarios\VM\UsuarioVM.cs" />
     <Compile Include="MVVM\Usuarios\VM\UsuarioXAML.cs" />
@@ -193,15 +176,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MVVM\Productos\Producto.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="MVVM\Principal\VentanaPrincipal.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\Tiendas\Tiendas.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="MVVM\Usuarios\UsuarioUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Usuarios\UsuarioVentana.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,6 +226,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Syncfusion.SfGrid.WPF.es.resx" />
+    <EmbeddedResource Include="Resources\Syncfusion.SfGrid.WPF.resx" />
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -272,6 +257,20 @@
     <Resource Include="Recursos\Imagenes\productos.png" />
     <Resource Include="Recursos\Imagenes\tiendas.png" />
     <Resource Include="Recursos\Imagenes\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\max.png" />
+    <Resource Include="Recursos\Imagenes\mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\delete.png" />
+    <Resource Include="Recursos\Imagenes\editar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\cerrar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Fody.6.5.3\build\Fody.targets" Condition="Exists('packages\Fody.6.5.3\build\Fody.targets')" />
