@@ -14,8 +14,6 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         private ObjetosMenu objetosMenu;
         private ContentControl controlSeleccionado;
         private double gridAncho;
-
-        public static event EventHandler<Window> EventoResizarVentana;
         public ObservableCollection<MenuItemParticular> Items { get; set; }      
         public ICommand ComandoClick => new RelayCommand<Object>(MenuItemClick, (o) => { return true; });
         public ICommand ComandoHomeAbierto => new RelayCommand<Object>(HomeAbiertoClick, (o) => { return true; });
@@ -33,25 +31,25 @@ namespace NegozioPlusCore.MVVM.Principal.VM
                 Items.Add(item.Value);
             }
 
-            gridAncho = 290;                        
+            gridAncho = 280;                        
         }
         private void HomeAbiertoClick(object obj)
         {
-            GridAncho = 290;                        
+            GridAncho = 280;                        
         }       
         private void HomeCerradoClick(object obj)
         {
-            GridAncho = 80;
+            GridAncho = 80;                        
         }
-
+        
         public ContentControl ControlSeleccionado
         {
             get { return this.controlSeleccionado; }
             set { SetValue(ref this.controlSeleccionado, value); }
         }
-
+        
         public double GridAncho
-        {
+        {            
             get { return this.gridAncho; }
             set { SetValue(ref this.gridAncho, value); }
         }
@@ -62,22 +60,13 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         private void MenuItemClick(object obj)
         {
             NavigationItemClickedEventArgs item = obj as NavigationItemClickedEventArgs;
-            if (item!=null)
+            MenuItemParticular mi = item.Item.DataContext as MenuItemParticular;
+            //obj?.GetType().Name
+            //DataContext es el objeto al cual hace referencia
+            if (mi.Item !=null)
             {
-                MenuItemParticular mi = item.Item.DataContext as MenuItemParticular;
-                if (mi!=null)
-                {
-                    //obj?.GetType().Name
-                    //DataContext es el objeto al cual hace referencia
-                    if (mi.Item != null)
-                    {
-                        ControlSeleccionado.Content = objetosMenu.ItemMenuControl(mi.Item);
-
-                    }
-                }
-               
-            }
-          
+                ControlSeleccionado.Content = objetosMenu.ItemMenuControl(mi.Item);
+            }      
         } 
     }
  
@@ -96,17 +85,17 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         {
             this.item = item;
             this.icon = icon;
-
+          
         }
 
-
+        
         public string Item
         {
             get { return item; }
             set { item = value; }
         }
 
-
+        
         public object Icon
         {
             get { return icon; }

@@ -1,8 +1,4 @@
-﻿using NegozioPlusCore.MVVM.Almacen;
-using NegozioPlusCore.MVVM.Categorias;
-using NegozioPlusCore.MVVM.Principal.VM;
-using NegozioPlusCore.MVVM.Productos;
-using NegozioPlusCore.MVVM.Tiendas;
+﻿using NegozioPlusCore.MVVM.Principal.VM;
 using NegozioPlusCore.MVVM.Usuarios;
 using NegozioPlusCore.Utilitarios;
 using System;
@@ -24,12 +20,10 @@ namespace NegozioPlusCore.Recursos
         private static ObjetosMenu _instancia;
 
         private readonly Dictionary<String, MenuItemParticular> _diccionarioMenu;
-        private readonly Dictionary<String, MenuItemParticular> _diccionarioSubMenu;
-
+        
         public ObjetosMenu()
         {
-            _diccionarioMenu = new Dictionary<String, MenuItemParticular>();
-            _diccionarioSubMenu = new Dictionary<string, MenuItemParticular>();
+            _diccionarioMenu = new Dictionary<String, MenuItemParticular>();            
             CargarItems();
         }
 
@@ -40,7 +34,7 @@ namespace NegozioPlusCore.Recursos
             AgregarItemMenu("Comprobantes", "/Recursos/Imagenes/comprobantes.png");
             AgregarItemMenu("Usuarios", "/Recursos/Imagenes/users.png");
             AgregarItemMenu("Sunat", "/Recursos/Imagenes/home.png");
-            AgregarItemMenu("Tiendas", "/Recursos/Imagenes/tiendas.png");
+            AgregarItemMenu("Tiendas", "/Recursos/Imagenes/tiendas.png");            
             AgregarSubItemMenu("Productos", "Categorias", "/Recursos/Imagenes/home.png");
             AgregarSubItemMenu("Comprobantes", "Tickets", "/Recursos/Imagenes/comprobantes.png");
             AgregarSubItemMenu("Comprobantes", "Boletas", "/Recursos/Imagenes/comprobantes.png");
@@ -52,7 +46,7 @@ namespace NegozioPlusCore.Recursos
             if (!DiccionarioMenu.ContainsKey(itemMenu))
             {
                 MenuItemParticular menuItem = new MenuItemParticular(itemMenu, icono);
-                DiccionarioMenu.Add(itemMenu, menuItem);
+                DiccionarioMenu.Add(itemMenu, menuItem);                
             }
         }
         public void AgregarSubItemMenu(string itemMenuPadre, string subMenuItem, object icono)
@@ -67,14 +61,12 @@ namespace NegozioPlusCore.Recursos
                     subMenu = new ObservableCollection<MenuItemParticular>();
                     subMenu.Add(menuItem);
                     menuPadre.SubItems = subMenu;
-                    _diccionarioSubMenu.Add(subMenuItem, menuItem);
                     return;
-                }
+                }                
                 if (!subMenu.Contains(menuItem))
                 {
                     subMenu.Add(menuItem);
-                    _diccionarioSubMenu.Add(subMenuItem, menuItem);
-                }
+                }                                                  
             }
         }
         public Object ItemMenuControl(string itemMenu)
@@ -86,41 +78,9 @@ namespace NegozioPlusCore.Recursos
                     case "Usuarios":
                         if (!ServiceLocator.Instance.ExistService<UsuarioUC>())
                         {
-                            ServiceLocator.Instance.RegisterService(new UsuarioUC());
+                            ServiceLocator.Instance.RegisterService(new UsuarioUC());                            
                         }
                         return ServiceLocator.Instance.GetService<UsuarioUC>();
-                    case "Almacen":
-                        if (!ServiceLocator.Instance.ExistService<Almacen>())
-                        {
-                            ServiceLocator.Instance.RegisterService(new Almacen());
-                        }
-                        return ServiceLocator.Instance.GetService<Almacen>();
-                    case "Productos":
-                        if (!ServiceLocator.Instance.ExistService<Producto>())
-                        {
-                            ServiceLocator.Instance.RegisterService(new Producto());
-                        }
-                        return ServiceLocator.Instance.GetService<Producto>();
-                    case "Tiendas":
-                        if (!ServiceLocator.Instance.ExistService<Tiendas>())
-                        {
-                            ServiceLocator.Instance.RegisterService(new Tiendas());
-                        }
-                        return ServiceLocator.Instance.GetService<Tiendas>();
-                    default:
-                        break;
-                }
-            }
-            if (_diccionarioSubMenu.ContainsKey(itemMenu))
-            {
-                switch (itemMenu)
-                {
-                    case "Categorias":
-                        if (!ServiceLocator.Instance.ExistService<Categorias>())
-                        {
-                            ServiceLocator.Instance.RegisterService(new Categorias());
-                        }
-                        return ServiceLocator.Instance.GetService<Categorias>();
                     default:
                         break;
                 }
@@ -134,6 +94,6 @@ namespace NegozioPlusCore.Recursos
                 return DiccionarioMenu[itemMenu];
             }
             return null;
-        }
+        }        
     }
 }
