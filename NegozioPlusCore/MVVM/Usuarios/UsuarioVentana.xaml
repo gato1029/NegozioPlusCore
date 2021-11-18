@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     Title="UsuarioVentana"
-    Width="800"
-    Height="700"
+    Width="600"
+    Height="600"
     AllowsTransparency="True"
     Background="{x:Null}"
     WindowStartupLocation="CenterScreen"
@@ -78,57 +78,111 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <syncfusion:SfTextInputLayout
-                        Grid.Row="0"
-                        Margin="20,20,20,0"
-                        VerticalAlignment="Center"
-                        Hint="Codigo:"
-                        Style="{DynamicResource NormalTextInput}">
-                        <TextBox Padding="10" />
-                    </syncfusion:SfTextInputLayout>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="150" />
+                        </Grid.ColumnDefinitions>
+                        <syncfusion:SfTextInputLayout
+                            x:Name="Usuario"
+                            Grid.Column="0"
+                            Margin="20,20,20,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            ErrorText="Ingrese un usuario"
+                            HelperText="Ingresa un usuario Unico."
+                            Hint="Usuario:"
+                            LeadingViewPosition="Inside"
+                            Style="{DynamicResource NormalTextInput}">
+
+                            <TextBox Padding="10" />
+                            <syncfusion:SfTextInputLayout.LeadingView>
+                                <Image Style="{DynamicResource ImgUsuarios}" />
+                            </syncfusion:SfTextInputLayout.LeadingView>
+
+                        </syncfusion:SfTextInputLayout>
+                        <CheckBox
+                            Grid.Column="1"
+                            Height="30"
+                            Margin="0,0,20,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Content="Deshabilitado"
+                            IsChecked="False"
+                            Style="{StaticResource chkBullet}"
+                            Tag="Habilitado"
+                            ToolTip="Indica si el usuario, esta habilitado." />
+                    </Grid>
+
+
                     <syncfusion:SfTextInputLayout
                         Grid.Row="1"
                         Margin="20,20,20,0"
                         VerticalAlignment="Center"
-                        Hint="Usuario:"
+                        HelperText="Ingresa el nombre del usuario."
+                        Hint="Nombre:"
+                        LeadingViewPosition="Inside"
                         Style="{DynamicResource NormalTextInput}">
                         <TextBox Padding="10" />
+                        <syncfusion:SfTextInputLayout.LeadingView>
+                            <Image Style="{DynamicResource ImgUsuarios}" />
+                        </syncfusion:SfTextInputLayout.LeadingView>
                     </syncfusion:SfTextInputLayout>
+
+
                     <syncfusion:SfTextInputLayout
                         Grid.Row="2"
                         Margin="20,20,20,0"
                         VerticalAlignment="Center"
-                        Hint="Nombre:"
+                        HelperText="Selecciona un cargo o ingresa uno nuevo."
+                        Hint="Cargo"
+                        LeadingViewPosition="Inside"
                         Style="{DynamicResource NormalTextInput}">
+                        <syncfusion:SfTextInputLayout.LeadingView>
+                            <Image Style="{DynamicResource ImgUsuarios}" />
+                        </syncfusion:SfTextInputLayout.LeadingView>
                         <TextBox Padding="10" />
+                        <!--<ComboBox
+                            DisplayMemberPath="Nombre"
+                            IsEditable="True"
+                            ItemsSource="{Binding CheckListModulos}" />-->
                     </syncfusion:SfTextInputLayout>
                     <syncfusion:SfTextInputLayout
                         Grid.Row="3"
                         Margin="20,20,20,0"
                         VerticalAlignment="Center"
-                        Hint="Tipo:"
+                        HelperText="Selecciona a que modulos tendra acceso el usuario."
+                        Hint="Modulos"
+                        LeadingViewPosition="Inside"
                         Style="{DynamicResource NormalTextInput}">
-                        <TextBox Padding="10" />
+                        <syncfusion:SfTextInputLayout.LeadingView>
+                            <Image Style="{DynamicResource ImgUsuarios}" />
+                        </syncfusion:SfTextInputLayout.LeadingView>
+                        <syncfusion:ComboBoxAdv
+                            AllowMultiSelect="True"
+                            AllowSelectAll="True"
+                            DisplayMemberPath="Nombre"
+                            ItemsSource="{Binding CheckListModulos}" />
                     </syncfusion:SfTextInputLayout>
-                    <syncfusion:SfTextInputLayout
+                    <syncfusion:ButtonAdv
+                        x:Name="button2"
                         Grid.Row="4"
-                        Margin="20,20,20,0"
-                        VerticalAlignment="Center"
-                        Hint="Modulos:"
-                        Style="{DynamicResource NormalTextInput}">
-                        <TextBox Padding="10" />
-                    </syncfusion:SfTextInputLayout>
-                    <syncfusion:SfTextInputLayout
-                        Grid.Row="5"
-                        Margin="20,20,20,0"
-                        VerticalAlignment="Center"
-                        Hint="Modulos:"
-                        Style="{DynamicResource NormalTextInput}">
-                        <TextBox Padding="10" />
-                    </syncfusion:SfTextInputLayout>
+                        Margin="20"
+                        HorizontalAlignment="Center"
+                        Background="Transparent"
+                        BorderBrush="Gray"
+                        FontSize="18"
+                        IconHeight="50"
+                        IconWidth="50"
+                        Label="Guardar"
+                        SizeMode="Normal"
+                        SmallIcon="/Recursos/Imagenes/guardar.png" />
+                    <!--  SelectedItems="{Binding SelectedItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  -->
+
                 </Grid>
             </Border>
 
