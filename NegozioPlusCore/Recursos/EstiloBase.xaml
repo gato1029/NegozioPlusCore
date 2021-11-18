@@ -4,38 +4,57 @@
     xmlns:local="clr-namespace:NegozioPlusCore.Recursos"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf">
 
-
+    <!--  bariol_regular-webfont.TTF #Bariol Regular  -->
     <Style x:Key="FuenteBaseButton" TargetType="Button">
-        <Setter Property="FontFamily" Value="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS" />
+        <Setter Property="FontFamily" Value="/Recursos/Fuentes/Fenix-Regular.TTF #Fenix" />
     </Style>
     <Style x:Key="FuenteBaseTextBlock" TargetType="TextBlock">
-        <Setter Property="FontFamily" Value="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS" />
+        <Setter Property="FontFamily" Value="/Recursos/Fuentes/Fenix-Regular.TTF #Fenix" />
     </Style>
     <Style x:Key="FuenteBaseBarraLateralMenu" TargetType="syncfusion:SfNavigationDrawer">
-        <Setter Property="FontFamily" Value="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="/Recursos/Fuentes/Fenix-Regular.TTF #Fenix" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="Foreground" Value="Black" />
     </Style>
     <Style x:Key="FuenteBaseMenu" TargetType="Label">
-        <Setter Property="FontFamily" Value="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="/Recursos/Fuentes/Fenix-Regular.TTF #Fenix" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="Foreground" Value="Black" />
     </Style>
     <Style x:Key="FuenteBaseDataGrid" TargetType="syncfusion:SfDataGrid">
-        <Setter Property="FontFamily" Value="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontFamily" Value="/Recursos/Fuentes/Fenix-Regular.TTF #Fenix" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="FontWeight" Value="Light" />
     </Style>
     <Style x:Key="FuenteBaseTextInput" TargetType="syncfusion:SfTextInputLayout">
-        <Setter Property="FontFamily" Value="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS" />
+        <Setter Property="FontFamily" Value="/Recursos/Fuentes/Fenix-Regular.TTF #Fenix" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="FontWeight" Value="Light" />
         <Setter Property="FocusedBorderBrush" Value="#78A2D2" />
         <Setter Property="FocusedForeground" Value="#78A2D2" />
     </Style>
+    <Style x:Key="FuenteBaseListCheckBox" TargetType="syncfusion:CheckListBox">
+        <Setter Property="FontFamily" Value="/Recursos/Fuentes/Fenix-Regular.TTF #Fenix" />
+        <Setter Property="FontSize" Value="15" />
+    </Style>
 
+    <!--#region TextBlock-->
+    <Style
+        x:Key="NormalTextBlock"
+        BasedOn="{StaticResource FuenteBaseTextBlock}"
+        TargetType="TextBlock">
+        <Setter Property="FontSize" Value="15" />
+    </Style>
+    <!--#endregion-->
+
+    <!--#region ListCheckBox-->
+    <Style
+        x:Key="NormalListCheckBox"
+        BasedOn="{StaticResource FuenteBaseListCheckBox}"
+        TargetType="syncfusion:CheckListBox" />
+    <!--#endregion-->
     <!--#region TextoInput-->
     <Style
         x:Key="BuscarTextInput"
@@ -46,6 +65,7 @@
         BasedOn="{StaticResource FuenteBaseTextInput}"
         TargetType="syncfusion:SfTextInputLayout">
         <Setter Property="ContainerBackground" Value="White" />
+        <Setter Property="OutlineCornerRadius" Value="10" />
     </Style>
     <!--#endregion-->
 
@@ -143,7 +163,7 @@
         <Setter Property="ItemsSource" Value="{Binding SubItems}" />
         <Setter Property="Margin" Value="0,10,0,0" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="FontFamily" Value="/Recursos/Fuentes/NEGOZIOPLUS.TTF #NEGOZIOPLUS" />
+
     </Style>
     <!--#endregion-->
     <!--#region DataGrid-->
@@ -323,4 +343,88 @@
         </Setter>
     </Style>
     <!--#endregion-->
+
+    <Style x:Key="chkBullet" TargetType="CheckBox">
+        <Setter Property="IsChecked" Value="False" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#888" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Border
+                        Width="130"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="10">
+                        <Grid>
+                            <Border
+                                x:Name="border"
+                                Width="25"
+                                Height="25"
+                                Margin="1,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Background="White"
+                                CornerRadius="9">
+                                <Border.RenderTransform>
+                                    <TranslateTransform X="0" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <TextBlock
+                                x:Name="txt"
+                                Margin="9,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="{TemplateBinding Content}">
+                                <TextBlock.RenderTransform>
+                                    <TranslateTransform X="18" />
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="txt" Property="Text" Value="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter Property="Background" Value="#38AE86" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                            To="100"
+                                            Duration="00:00:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="txt"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                            To="0"
+                                            Duration="00:00:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                            To="0"
+                                            Duration="00:00:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="txt"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                            To="18"
+                                            Duration="00:00:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Background" Value="PaleVioletRed" />
+                            <Setter TargetName="txt" Property="Text" Value="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NegozioPlusCore.MVVM.Usuarios.VM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace NegozioPlusCore.MVVM.Usuarios
         public UsuarioVentana()
         {
             InitializeComponent();
+            this.DataContext = new UsuarioVentanaVM();
         }
         protected override void OnClosed(EventArgs e)
         {
