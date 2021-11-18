@@ -221,6 +221,15 @@
     <Style x:Key="ImgUsuarios" TargetType="Image">
         <Setter Property="Source" Value="/Recursos/Imagenes/users.png" />
     </Style>
+    <Style x:Key="ImgAlmacen" TargetType="Image">
+        <Setter Property="Source" Value="/Recursos/Imagenes/almacen.png" />
+    </Style>
+    <Style x:Key="ImgProductos" TargetType="Image">
+        <Setter Property="Source" Value="/Recursos/Imagenes/productos.png" />
+    </Style>
+    <Style x:Key="ImgTiendas" TargetType="Image">
+        <Setter Property="Source" Value="/Recursos/Imagenes/tiendas.png" />
+    </Style>
     <Style x:Key="ImgCerrarSesion" TargetType="Image">
         <Setter Property="Source" Value="/Recursos/Imagenes/home.png" />
     </Style>

@@ -1,0 +1,68 @@
+﻿<UserControl 
+        x:Class="NegozioPlusCore.MVVM.Almacen.AlmacenAgregar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Almacen"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        mc:Ignorable="d"
+        d:DesignHeight="800" d:DesignWidth="1000">
+    <Border>
+        <StackPanel RenderTransformOrigin="0.5,0.5">
+            <StackPanel.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF7DBF44" Offset="0"/>
+                    <GradientStop Color="#FF438B3F" Offset="1"/>
+                </RadialGradientBrush>
+            </StackPanel.Background>
+            <Grid Height="800"  >
+                <Grid.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#7DBF44"/>
+                        <GradientStop Color="#438B3F" Offset="1"/>
+                    </RadialGradientBrush>
+                </Grid.Background>
+                <Border Margin="10,10,10,10" CornerRadius="20" BorderThickness="0.1" BorderBrush="#FF2B8343">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFFFD" Offset="1"/>
+                            <GradientStop Color="#DBDBDB"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FF539A40" />
+                    </Border.Effect>
+                    <UniformGrid Columns="1" Margin="100">
+
+                        <syncfusion:SfTextInputLayout Hint="Nombre" HintFloatMode="Float" HelperText="Ingrese el nombre del amacen" Margin="10" >
+                                <TextBox/>
+                            </syncfusion:SfTextInputLayout>
+
+
+                        <syncfusion:SfTextInputLayout Hint="Direccion" HintFloatMode="Float" HelperText="Ingrese la direccion del almacen"  Margin="10" > 
+                                <TextBox/>
+                            </syncfusion:SfTextInputLayout>
+                           
+                        <StackPanel Orientation="Horizontal" >
+                            <syncfusion:SfTextInputLayout Hint="Latitud" HintFloatMode="Float"   Margin="20">
+                                <TextBox/>
+                            </syncfusion:SfTextInputLayout>
+                            <syncfusion:SfTextInputLayout Hint="Longitud" HintFloatMode="Float"  Margin="20">
+                                <TextBox/>
+                            </syncfusion:SfTextInputLayout>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20">
+                            <syncfusion:ButtonAdv x:Name="Guardar" Label="Guardar" Margin="30" BorderBrush="White" Background="#FF438B3F" Foreground="White"/>
+                            <syncfusion:ButtonAdv x:Name="Cancelar" Label="Cancelar" Margin="30" BorderBrush="White" Background="#FF438B3F" Foreground="White"/>
+                        </StackPanel>
+                    </UniformGrid>
+                    
+
+                </Border>
+
+            </Grid>
+
+        </StackPanel>
+    </Border>
+</UserControl>
