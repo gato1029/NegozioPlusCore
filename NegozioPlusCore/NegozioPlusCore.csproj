@@ -137,11 +137,16 @@
     <Compile Include="MVVM\Almacen\AlmacenAgregar.xaml.cs">
       <DependentUpon>AlmacenAgregar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Almacen\VM\AlmacenAgregarVM.cs" />
     <Compile Include="MVVM\Almacen\VM\AlmacenVM.cs" />
     <Compile Include="MVVM\Almacen\VM\AlmacenXAML.cs" />
     <Compile Include="MVVM\Categorias\Categorias.xaml.cs">
       <DependentUpon>Categorias.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Categorias\CategoriasAgregar.xaml.cs">
+      <DependentUpon>CategoriasAgregar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Categorias\VM\CategoriasAgregarVM.cs" />
     <Compile Include="MVVM\Categorias\VM\CategoriasVM.cs" />
     <Compile Include="MVVM\Categorias\VM\CategoriasXAML.cs" />
     <Compile Include="MVVM\Principal\VentanaPrincipal.xaml.cs">
@@ -155,6 +160,10 @@
     <Compile Include="MVVM\Tiendas\Tiendas.xaml.cs">
       <DependentUpon>Tiendas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Tiendas\TiendasAgregar.xaml.cs">
+      <DependentUpon>TiendasAgregar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Tiendas\VM\TiendasAgregarVM.cs" />
     <Compile Include="MVVM\Tiendas\VM\TiendasVM.cs" />
     <Compile Include="MVVM\Tiendas\VM\TiendasXAML.cs" />
     <Compile Include="MVVM\Usuarios\UsuarioUC.xaml.cs">
@@ -195,6 +204,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="MVVM\Categorias\CategoriasAgregar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\Principal\PrincipalPagina.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -210,6 +223,10 @@
     <Page Include="MVVM\Tiendas\Tiendas.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Tiendas\TiendasAgregar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Usuarios\UsuarioUC.xaml">
       <SubType>Designer</SubType>

@@ -16,20 +16,20 @@ namespace NegozioPlusCore.MVVM.Tiendas.VM
 {
     class TiendasVM : NotificadorGenerico
     {
-        //private UsuarioVentana usuarioVentanaNuevo;
+        private TiendasAgregar tiendasAgregarNuevo;
         private double altoGridDatos;
         public ObservableCollection<TiendasXAML> Coleccion { get; set; }
         public ICommand ComandoClickAgregar => new RelayCommand<Object>(ClickAgregar, (o) => { return true; });
 
         private void ClickAgregar(object obj)
         {
-            /*
-            if (usuarioVentanaNuevo == null || usuarioVentanaNuevo.IsClosed)
+            
+            if (tiendasAgregarNuevo == null || tiendasAgregarNuevo.IsClosed)
             {
-                usuarioVentanaNuevo = new UsuarioVentana();
+                tiendasAgregarNuevo = new TiendasAgregar();
             }
-            usuarioVentanaNuevo.Show();
-            */
+            tiendasAgregarNuevo.Show();
+            
         }
 
         public TiendasVM()

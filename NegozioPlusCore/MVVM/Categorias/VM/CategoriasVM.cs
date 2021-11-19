@@ -16,19 +16,19 @@ namespace NegozioPlusCore.MVVM.Categorias.VM
 {
     class CategoriasVM : NotificadorGenerico
     {
-        //private UsuarioVentana usuarioVentanaNuevo;
+        private CategoriasAgregar categoriaAgregarNuevo;
         private double altoGridDatos;
         public ObservableCollection<CategoriasXAML> Coleccion { get; set; }
         public ICommand ComandoClickAgregar => new RelayCommand<Object>(ClickAgregar, (o) => { return true; });
         private void ClickAgregar(object obj)
         {
-            /*
-            if (usuarioVentanaNuevo == null || usuarioVentanaNuevo.IsClosed)
+            
+            if (categoriaAgregarNuevo == null || categoriaAgregarNuevo.IsClosed)
             {
-                usuarioVentanaNuevo = new UsuarioVentana();
+                categoriaAgregarNuevo = new CategoriasAgregar();
             }
-            usuarioVentanaNuevo.Show();
-            */
+            categoriaAgregarNuevo.Show();
+            
         }
         public CategoriasVM()
         {
