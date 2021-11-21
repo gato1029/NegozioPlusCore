@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
 using NegozioPlusCore.MVVM.Principal;
 using NegozioPlusCore.MVVM.Principal.VM;
+using NegozioPlusCore.NucleoRealm.Controladores;
 using NegozioPlusCore.Utilitarios;
 using System;
 using System.Collections.Generic;
@@ -17,41 +18,45 @@ namespace NegozioPlusCore.MVVM.Usuarios.VM
     class UsuarioVM : NotificadorGenerico
     {
         private UsuarioVentana usuarioVentanaNuevo;
-        private double altoGridDatos;
-        public ObservableCollection<UsuarioXAML> Coleccion { get; set; }
+        private ObservableCollection<UsuarioXAML> coleccion;
+        private bool cargandoBusy;
         public ICommand ComandoClickAgregar => new RelayCommand<Object>(ClickAgregar, (o) => { return true; });
+        public ICommand ComandoVentanaCargada => new RelayCommand<Object>(VentanaCargada, (o) => { return true; });
 
-        private void ClickAgregar(object obj)
+        private async void VentanaCargada(object obj)
         {
             
-            if (usuarioVentanaNuevo==null || usuarioVentanaNuevo.IsClosed)
+            UsuarioController uc = new UsuarioController();
+            CargandoBusy = true;
+            Coleccion = await uc.ObtenerTodo();
+            CargandoBusy = false;
+        }
+
+        private void ClickAgregar(object obj)
+        {           
+            if (usuarioVentanaNuevo == null || usuarioVentanaNuevo.IsClosed)
             {
                 usuarioVentanaNuevo = new UsuarioVentana();
-            }            
+            }
             usuarioVentanaNuevo.Show();
-            
         }
 
         public UsuarioVM()
         {
-            PrincipalPaginaVM.EventoResizarVentana += PrincipalPaginaVM_EventoResizarVentana;
+
             Coleccion = new ObservableCollection<UsuarioXAML>();
-            Coleccion.Add(new UsuarioXAML("gatoaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "cat"));
-            Coleccion.Add(new UsuarioXAML("perro", "dog"));
-          
         }
 
-        private void PrincipalPaginaVM_EventoResizarVentana(object sender, Window e)
+     
+        public ObservableCollection<UsuarioXAML> Coleccion
         {
-            AltoGridDatos = e.Height - 220;
-            
+            get { return this.coleccion; }
+            set { SetValue(ref this.coleccion, value); }
         }
-
-        public double AltoGridDatos
+        public bool CargandoBusy
         {
-            get { return this.altoGridDatos; }
-            set { SetValue(ref this.altoGridDatos, value); }
+            get { return this.cargandoBusy; }
+            set { SetValue(ref this.cargandoBusy, value); }
         }
-
     }
 }

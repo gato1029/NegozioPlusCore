@@ -2,7 +2,7 @@
 
 namespace NegozioPlusCore.MVVM.Usuarios.VM
 {
-    class UsuarioXAML: NotificadorGenerico
+    public class UsuarioXAML: NotificadorGenerico
     {
         string usuario;
         string nombre;

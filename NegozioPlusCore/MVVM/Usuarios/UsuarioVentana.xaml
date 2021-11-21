@@ -88,7 +88,6 @@
                             <ColumnDefinition Width="150" />
                         </Grid.ColumnDefinitions>
                         <syncfusion:SfTextInputLayout
-                            x:Name="Usuario"
                             Grid.Column="0"
                             Margin="20,20,20,0"
                             HorizontalAlignment="Left"
@@ -99,7 +98,7 @@
                             LeadingViewPosition="Inside"
                             Style="{DynamicResource NormalTextInput}">
 
-                            <TextBox Padding="10" />
+                            <TextBox Padding="10" Text="{Binding Usuario, Mode=TwoWay}" />
                             <syncfusion:SfTextInputLayout.LeadingView>
                                 <Image Style="{DynamicResource ImgUsuarios}" />
                             </syncfusion:SfTextInputLayout.LeadingView>
@@ -127,7 +126,7 @@
                         Hint="Nombre:"
                         LeadingViewPosition="Inside"
                         Style="{DynamicResource NormalTextInput}">
-                        <TextBox Padding="10" />
+                        <TextBox Padding="10" Text="{Binding Nombre, Mode=TwoWay}" />
                         <syncfusion:SfTextInputLayout.LeadingView>
                             <Image Style="{DynamicResource ImgUsuarios}" />
                         </syncfusion:SfTextInputLayout.LeadingView>
@@ -142,10 +141,10 @@
                         Hint="Cargo"
                         LeadingViewPosition="Inside"
                         Style="{DynamicResource NormalTextInput}">
+                        <TextBox Padding="10" Text="{Binding Cargo, Mode=TwoWay}" />
                         <syncfusion:SfTextInputLayout.LeadingView>
                             <Image Style="{DynamicResource ImgUsuarios}" />
                         </syncfusion:SfTextInputLayout.LeadingView>
-                        <TextBox Padding="10" />
                         <!--<ComboBox
                             DisplayMemberPath="Nombre"
                             IsEditable="True"
@@ -166,7 +165,8 @@
                             AllowMultiSelect="True"
                             AllowSelectAll="True"
                             DisplayMemberPath="Nombre"
-                            ItemsSource="{Binding CheckListModulos}" />
+                            ItemsSource="{Binding CheckListModulos}"
+                            SelectedItems="{Binding CheckListModulosSeleccionados, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </syncfusion:SfTextInputLayout>
                     <syncfusion:ButtonAdv
                         x:Name="button2"
@@ -175,13 +175,14 @@
                         HorizontalAlignment="Center"
                         Background="Transparent"
                         BorderBrush="Gray"
+                        Command="{Binding ComandoClickGuardar}"
                         FontSize="18"
                         IconHeight="50"
                         IconWidth="50"
                         Label="Guardar"
                         SizeMode="Normal"
                         SmallIcon="/Recursos/Imagenes/guardar.png" />
-                    <!--  SelectedItems="{Binding SelectedItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  -->
+
 
                 </Grid>
             </Border>
