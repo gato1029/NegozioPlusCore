@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
 using NegozioPlusCore.MVVM.Principal;
 using NegozioPlusCore.NucleoRealm;
+using NegozioPlusCore.NucleoRealm.Controladores;
 using NegozioPlusCore.NucleoRealm.Modelos;
 using NegozioPlusCore.NucleoRealm.ModelosBson;
 using NegozioPlusCore.Utilitarios;
@@ -28,7 +29,7 @@ namespace NegozioPlusCore.MVVM.Login.VM
             configuracion = Configuracion.Instanciar();
             usuarioLocal = "josue.ccama@gmail.com";
             passwordLocal = "123456";
-            codigoEmpresa = "6170c2677552a959d787f54c";
+            codigoEmpresa = "6160df845f147730d5f0259a";
             CargandoBusy = false;
         }
 
@@ -61,7 +62,7 @@ namespace NegozioPlusCore.MVVM.Login.VM
                     await configuracion.UsuarioRealm.RefreshCustomDataAsync();
                     UsuarioLogeado usuarioData = configuracion.UsuarioRealm.GetCustomData<UsuarioLogeado>();
                     CargandoBusy = false;
-                    ServiceLocator.Instance.RegisterService<UsuarioLogeado>(usuarioData);
+                    ServiceLocator.Instance.RegisterService<UsuarioLogeado>(usuarioData);                  
                     VentanaPrincipal vp = new VentanaPrincipal();
                     vp.Show();
                     obj.Close();

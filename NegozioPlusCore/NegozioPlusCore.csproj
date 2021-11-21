@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="MVVM\Login\VM\LoginVentanaVM.cs" />
     <Compile Include="NucleoRealm\Controladores\BaseController.cs" />
+    <Compile Include="NucleoRealm\Controladores\EmpresaController.cs" />
     <Compile Include="NucleoRealm\Controladores\UsuarioController.cs" />
     <Compile Include="NucleoRealm\ModelosBson\UsuarioLogeado.cs" />
     <Compile Include="MVVM\Principal\VentanaPrincipal.xaml.cs">
@@ -149,12 +150,12 @@
       <DependentUpon>UsuarioVentana.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Usuarios\VM\UsuarioVentanaVM.cs" />
-    <Compile Include="MVVM\Usuarios\VM\UsuarioVM.cs" />
-    <Compile Include="MVVM\Usuarios\VM\UsuarioXAML.cs" />
+    <Compile Include="MVVM\Usuarios\VM\UsuarioUCVM.cs" />
     <Compile Include="NucleoRealm\Modelos\Empresa.cs" />
     <Compile Include="NucleoRealm\Modelos\Usuario.cs" />
     <Compile Include="NucleoRealm\Modelos\UsuarioEmpresa.cs" />
     <Compile Include="Recursos\ObjetosMenu.cs" />
+    <Compile Include="Utilitarios\AdministradorVentanas.cs" />
     <Compile Include="Utilitarios\NotificadorGenerico.cs" />
     <Compile Include="Utilitarios\ServiceLocator.cs" />
     <Page Include="MainWindow.xaml">
@@ -186,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Usuarios\UsuarioVentana.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Recursos\DataTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

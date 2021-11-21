@@ -1,5 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
 using NegozioPlusCore.NucleoRealm;
+using NegozioPlusCore.NucleoRealm.Controladores;
+using NegozioPlusCore.NucleoRealm.Modelos;
 using NegozioPlusCore.NucleoRealm.ModelosBson;
 using NegozioPlusCore.Recursos;
 using NegozioPlusCore.Utilitarios;
@@ -43,7 +45,10 @@ namespace NegozioPlusCore.MVVM.Principal.VM
         private async void VentanaCargada(object obj)
         {
             CargandoBusy = true;
-           await Conectar();
+            await Conectar();
+            var usuarioData = ServiceLocator.Instance.GetService<UsuarioLogeado>();
+            Empresa emp = await EmpresaController.Instance.BuscarUno(usuarioData.idEmp.Value);
+            ServiceLocator.Instance.RegisterService<Empresa>(emp);
             CargandoBusy = false;
         }
 

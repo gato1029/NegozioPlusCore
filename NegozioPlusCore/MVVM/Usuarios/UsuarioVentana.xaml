@@ -2,10 +2,13 @@
     x:Class="NegozioPlusCore.MVVM.Usuarios.UsuarioVentana"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Usuarios"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    xmlns:vmUsuarios="clr-namespace:NegozioPlusCore.MVVM.Usuarios.VM"
+    x:Name="VentanaActual"
     Title="UsuarioVentana"
     Width="600"
     Height="600"
@@ -14,6 +17,15 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
+    <behaviours:Interaction.Triggers>
+        <behaviours:EventTrigger EventName="Closed">
+            <behaviours:InvokeCommandAction Command="{Binding ComandoClickCerrar}" PassEventArgsToCommand="True" />
+        </behaviours:EventTrigger>
+    </behaviours:Interaction.Triggers>
+
+    <Window.DataContext>
+        <vmUsuarios:UsuarioVentanaVM />
+    </Window.DataContext>
     <Border CornerRadius="10" Style="{DynamicResource BorderFondoBase}">
 
         <DockPanel LastChildFill="True">
@@ -164,7 +176,6 @@
                         <syncfusion:ComboBoxAdv
                             AllowMultiSelect="True"
                             AllowSelectAll="True"
-                            DisplayMemberPath="Nombre"
                             ItemsSource="{Binding CheckListModulos}"
                             SelectedItems="{Binding CheckListModulosSeleccionados, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </syncfusion:SfTextInputLayout>
@@ -176,6 +187,7 @@
                         Background="Transparent"
                         BorderBrush="Gray"
                         Command="{Binding ComandoClickGuardar}"
+                        CommandParameter="{Binding ElementName=VentanaActual}"
                         FontSize="18"
                         IconHeight="50"
                         IconWidth="50"

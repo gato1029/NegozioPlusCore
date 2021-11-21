@@ -9,6 +9,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Recursos/EstiloBase.xaml" />
                 <ResourceDictionary Source="Recursos/ImagenesDiccionario.xaml" />
+                <ResourceDictionary Source="Recursos/DataTemplates.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -1,4 +1,5 @@
-﻿using NegozioPlusCore.MVVM.Usuarios.VM;
+﻿using MongoDB.Bson;
+using NegozioPlusCore.MVVM.Usuarios.VM;
 using NegozioPlusCore.NucleoRealm.Modelos;
 using NegozioPlusCore.NucleoRealm.ModelosBson;
 using NegozioPlusCore.Utilitarios;
@@ -11,8 +12,11 @@ using System.Threading.Tasks;
 
 namespace NegozioPlusCore.NucleoRealm.Controladores
 {
-    public class UsuarioController : BaseController<UsuarioXAML>
+    //Pasar  objeto realm
+    public class UsuarioController : BaseController<Usuario>
     {
+        public static UsuarioController Instance => _instance ?? (_instance = new UsuarioController());
+        private static UsuarioController _instance;
         public UsuarioController(Particion particion) : base(particion)
         {
            
@@ -20,43 +24,18 @@ namespace NegozioPlusCore.NucleoRealm.Controladores
 
         public UsuarioController() :base()
         {
-        }
-
-        public override void Eliminar(string idUnico)
-        {
-            
-        }
-
-        public  override void Insertar(UsuarioXAML dato)
-        {
-          
-           
-          
-        }
-
-        public override void Modificar(string idOriginal, UsuarioXAML datoNuevo)
-        {
-            
-        }
-
-        public async override Task <ObservableCollection<UsuarioXAML>> ObtenerTodo()
+        }      
+        public async override Task Modificar(ObjectId idOriginal, Usuario datoNuevo)
         {
             await Verificar(false);
-            ObservableCollection<UsuarioXAML> lista = new ObservableCollection<UsuarioXAML>();
-            var usuariosRealm = particion._realm.All<Usuario>();
-            foreach (var item in usuariosRealm)
-            {
-                lista.Add(Convertir(item));
-            }            
-            return lista;
+            particion._realm.Write(() =>
+            {               
+                var data = particion._realm.Find<Usuario>(idOriginal);
+                data.Nombre  = datoNuevo.Nombre;
+                data.UsuarioLocal = datoNuevo.UsuarioLocal;
+                data.Rol = datoNuevo.Rol;
+            });
         }
-
-        public UsuarioXAML Convertir(Usuario usuario)
-        {
-            UsuarioXAML usuarioXAML = new UsuarioXAML(usuario.UsuarioLocal,usuario.Nombre);
-            return usuarioXAML;
-        }
-
-    
+   
     }
 }

@@ -113,13 +113,7 @@
                             Grid.Column="4"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
-                            Style="{DynamicResource BotonImagen}">
-                            <Image Style="{DynamicResource ImgBotonModificar}" />
-                        </Button>
-                        <Button
-                            Grid.Column="5"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
+                            Command="{Binding ComandoClickEliminar}"
                             Style="{DynamicResource BotonImagen}">
                             <Image Style="{DynamicResource ImgBotonEliminar}" />
                         </Button>
@@ -151,14 +145,25 @@
                                 HeaderLinesVisibility="Both"
                                 ItemsSource="{Binding ElementName=dataPager, Path=PagedSource}"
                                 ScrollMode="Async"
+                                SelectedItem="{Binding ItemSeleccionado, Mode=TwoWay}"
                                 SelectionMode="Extended"
-                                SelectionUnit="Any"
+                                SelectionUnit="Row"
                                 ShowRowHeader="True"
                                 Style="{DynamicResource DataGrid}">
+                                <behaviours:Interaction.Triggers>
+                                    <behaviours:EventTrigger EventName="MouseDoubleClick">
+                                        <behaviours:InvokeCommandAction Command="{Binding ComandoDobleClick}" PassEventArgsToCommand="True" />
+                                    </behaviours:EventTrigger>
+                                </behaviours:Interaction.Triggers>
                                 <syncfusion:SfDataGrid.Columns>
-                                    <syncfusion:GridTextColumn MappingName="Usuario" />
+                                    <syncfusion:GridTextColumn HeaderText="Id" MappingName="Id" />
+                                    <syncfusion:GridTextColumn HeaderText="Usuario" MappingName="UsuarioLocal" />
                                     <syncfusion:GridTextColumn MappingName="Nombre" />
+                                    <syncfusion:GridTextColumn MappingName="Correo" />
+                                    <syncfusion:GridTextColumn MappingName="DocIdentidad" />
+                                    <syncfusion:GridTextColumn MappingName="IdUsuario" />
                                 </syncfusion:SfDataGrid.Columns>
+
                             </syncfusion:SfDataGrid>
                             <syncfusion:SfDataPager
                                 x:Name="dataPager"
