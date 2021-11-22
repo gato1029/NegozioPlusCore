@@ -1,17 +1,11 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
 using NegozioPlusCore.MVVM.Principal;
-using NegozioPlusCore.MVVM.Principal.VM;
 using NegozioPlusCore.NucleoRealm.Controladores;
 using NegozioPlusCore.NucleoRealm.Modelos;
 using NegozioPlusCore.Utilitarios;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace NegozioPlusCore.MVVM.Usuarios.VM
@@ -34,13 +28,20 @@ namespace NegozioPlusCore.MVVM.Usuarios.VM
         }
         private async void ClickEliminar(object obj)
         {
-            await UsuarioController.Instance.Eliminar(itemSeleccionado);
-            coleccion.Remove(itemSeleccionado);
+            //luego creare una ventana personalizada
+            MessageBoxResult Result = System.Windows.MessageBox.Show("Estas Seguro de eliminar el usuario","Advertencia",MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+            {
+                await UsuarioController.Instance.Eliminar(itemSeleccionado);
+                coleccion.Remove(itemSeleccionado);
+            }            
         }
         private void ClickAgregar(object obj)
         {
             Usuario nuevo = new Usuario();
-            AdministradorVentanas.Instance.RegistrarVentana<UsuarioVentana>("0", new UsuarioVentanaVM(nuevo)).Show();            
+            UsuarioVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<UsuarioVentana>("0", new UsuarioVentanaVM(nuevo));
+            ventana.Owner = ServiceLocator.Instance.GetService<VentanaPrincipal>();
+            ventana.Show();
         }
         public void RefrescarGrid(Usuario nuevo) 
         { //sirve para el refresco desde la otra ventana
@@ -50,7 +51,9 @@ namespace NegozioPlusCore.MVVM.Usuarios.VM
         {
             if (itemSeleccionado != null)
             {
-                AdministradorVentanas.Instance.RegistrarVentana<UsuarioVentana>(itemSeleccionado.Id.ToString(), new UsuarioVentanaVM(itemSeleccionado)).Show();
+                UsuarioVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<UsuarioVentana>(itemSeleccionado.Id.ToString(), new UsuarioVentanaVM(itemSeleccionado));
+                ventana.Owner = ServiceLocator.Instance.GetService<VentanaPrincipal>();
+                ventana.Show();
             }
         }
         public UsuarioUCVM()

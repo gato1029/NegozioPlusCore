@@ -64,6 +64,7 @@ namespace NegozioPlusCore.MVVM.Login.VM
                     CargandoBusy = false;
                     ServiceLocator.Instance.RegisterService<UsuarioLogeado>(usuarioData);                  
                     VentanaPrincipal vp = new VentanaPrincipal();
+                    ServiceLocator.Instance.RegisterService<VentanaPrincipal>(vp);
                     vp.Show();
                     obj.Close();
                 }

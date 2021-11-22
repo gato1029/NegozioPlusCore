@@ -22,12 +22,7 @@
             <behaviours:InvokeCommandAction Command="{Binding ComandoClickCerrar}" PassEventArgsToCommand="True" />
         </behaviours:EventTrigger>
     </behaviours:Interaction.Triggers>
-
-    <Window.DataContext>
-        <vmUsuarios:UsuarioVentanaVM />
-    </Window.DataContext>
     <Border CornerRadius="10" Style="{DynamicResource BorderFondoBase}">
-
         <DockPanel LastChildFill="True">
             <Border
                 x:Name="BarraTop"
