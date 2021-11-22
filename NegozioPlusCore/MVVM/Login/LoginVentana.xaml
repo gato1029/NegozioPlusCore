@@ -162,9 +162,9 @@
                                 FontSize="18"
                                 IconHeight="50"
                                 IconWidth="50"
-                                Label="Guardar"
+                                Label="Login"
                                 SizeMode="Normal"
-                                SmallIcon="/Recursos/Imagenes/guardar.png" />
+                                SmallIcon="/Recursos/Imagenes/login.png" />
                         </Grid>
                         <Grid
                             HorizontalAlignment="Center"
