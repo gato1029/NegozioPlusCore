@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     xmlns:syncfusionskin="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+    x:Name="VentanaActual"
     Title="VentanaPrincipal"
     Width="800"
     Height="450"
@@ -23,6 +24,9 @@
     <behaviours:Interaction.Triggers>
         <behaviours:EventTrigger EventName="SizeChanged">
             <behaviours:InvokeCommandAction Command="{Binding ComandoVentanaCambioTam}" PassEventArgsToCommand="True" />
+        </behaviours:EventTrigger>
+        <behaviours:EventTrigger EventName="Loaded">
+            <behaviours:InvokeCommandAction Command="{Binding ComandoVentanaAparece}" PassEventArgsToCommand="True" />
         </behaviours:EventTrigger>
     </behaviours:Interaction.Triggers>
     <Window.DataContext>
@@ -249,103 +253,107 @@
                     </Grid>
                 </Border>
 
+                <syncfusion:SfBusyIndicator IsBusy="{Binding CargandoBusy}" Style="{DynamicResource FuenteBaseSfBusyIndicatorNormal}">
+                    <DockPanel LastChildFill="True">
+                        <Grid
+                            Width="{Binding GridAncho, Mode=TwoWay}"
+                            HorizontalAlignment="Left"
+                            DockPanel.Dock="Left">
 
-                <DockPanel LastChildFill="True">
-                    <Grid
-                        Width="{Binding GridAncho, Mode=TwoWay}"
-                        HorizontalAlignment="Left"
-                        DockPanel.Dock="Left">
-
-                        <Border
-                            Margin="10,10,10,10"
-                            BorderThickness="0.1"
-                            CornerRadius="20,0,0,20"
-                            Style="{DynamicResource BorderFondoDegradoColor}" />
-                        <syncfusion:SfNavigationDrawer
-                            x:Name="BarraIzquierda"
-                            Margin="20"
-                            VerticalContentAlignment="Stretch"
-                            Background="{x:Null}"
-                            BorderBrush="{x:Null}"
-                            DisplayMemberPath="Item"
-                            DisplayMode="Expanded"
-                            DockPanel.Dock="Left"
-                            DrawerBackground="Transparent"
-                            IconMemberPath="Icon"
-                            ItemContainerStyle="{DynamicResource SFItemStyle}"
-                            ItemsSource="{Binding Items}"
-                            Style="{DynamicResource BarraLateralMenu}">
-                            <syncfusion:SfNavigationDrawer.ToggleButtonIconTemplate>
-                                <DataTemplate>
-                                    <Image
-                                        x:Name="image"
-                                        Width="30"
-                                        Height="30"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        Style="{DynamicResource ImgHome}" />
-
-                                </DataTemplate>
-                            </syncfusion:SfNavigationDrawer.ToggleButtonIconTemplate>
-                            <syncfusion:SfNavigationDrawer.ToggleButtonContentTemplate>
-                                <DataTemplate>
-                                    <Label
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        Content="Menu"
-                                        Style="{DynamicResource FuenteBaseMenu}" />
-                                </DataTemplate>
-                            </syncfusion:SfNavigationDrawer.ToggleButtonContentTemplate>
-
-                            <syncfusion:SfNavigationDrawer.FooterItems>
-                                <syncfusion:NavigationItem Background="Transparent" Header="Cerrar Sesion">
-                                    <syncfusion:NavigationItem.Icon>
+                            <Border
+                                Margin="10,10,10,10"
+                                BorderThickness="0.1"
+                                CornerRadius="20,0,0,20"
+                                Style="{DynamicResource BorderFondoDegradoColor}" />
+                            <syncfusion:SfNavigationDrawer
+                                x:Name="BarraIzquierda"
+                                Margin="20"
+                                VerticalContentAlignment="Stretch"
+                                Background="{x:Null}"
+                                BorderBrush="{x:Null}"
+                                DisplayMemberPath="Item"
+                                DisplayMode="Expanded"
+                                DockPanel.Dock="Left"
+                                DrawerBackground="Transparent"
+                                IconMemberPath="Icon"
+                                ItemContainerStyle="{DynamicResource SFItemStyle}"
+                                ItemsSource="{Binding Items}"
+                                Style="{DynamicResource BarraLateralMenu}">
+                                <syncfusion:SfNavigationDrawer.ToggleButtonIconTemplate>
+                                    <DataTemplate>
                                         <Image
                                             x:Name="image"
                                             Width="30"
                                             Height="30"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center"
-                                            Style="{DynamicResource ImgCerrarSesion}" />
-                                    </syncfusion:NavigationItem.Icon>
-                                </syncfusion:NavigationItem>
+                                            Style="{DynamicResource ImgHome}" />
 
-                            </syncfusion:SfNavigationDrawer.FooterItems>
-                            <behaviours:Interaction.Triggers>
-                                <behaviours:EventTrigger EventName="ItemClicked">
-                                    <behaviours:InvokeCommandAction Command="{Binding ComandoClick}" PassEventArgsToCommand="True" />
-                                </behaviours:EventTrigger>
-                                <behaviours:EventTrigger EventName="Opened">
-                                    <behaviours:InvokeCommandAction Command="{Binding ComandoHomeAbierto}" PassEventArgsToCommand="True" />
-                                </behaviours:EventTrigger>
-                                <behaviours:EventTrigger EventName="Closed">
-                                    <behaviours:InvokeCommandAction Command="{Binding ComandoHomeCerrado}" PassEventArgsToCommand="True" />
-                                </behaviours:EventTrigger>
-                            </behaviours:Interaction.Triggers>
+                                    </DataTemplate>
+                                </syncfusion:SfNavigationDrawer.ToggleButtonIconTemplate>
+                                <syncfusion:SfNavigationDrawer.ToggleButtonContentTemplate>
+                                    <DataTemplate>
+                                        <Label
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Content="Menu"
+                                            Style="{DynamicResource FuenteBaseMenu}" />
+                                    </DataTemplate>
+                                </syncfusion:SfNavigationDrawer.ToggleButtonContentTemplate>
 
-                        </syncfusion:SfNavigationDrawer>
+                                <syncfusion:SfNavigationDrawer.FooterItems>
+                                    <syncfusion:NavigationItem
+                                        Background="Transparent"
+                                        Command="{Binding ComandoClickSalir}"
+                                        CommandParameter="{Binding ElementName=VentanaActual}"
+                                        Header="Cerrar Sesion">
+                                        <syncfusion:NavigationItem.Icon>
+                                            <Image
+                                                x:Name="image"
+                                                Width="30"
+                                                Height="30"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Style="{DynamicResource ImgCerrarSesion}" />
+                                        </syncfusion:NavigationItem.Icon>
+                                    </syncfusion:NavigationItem>
+
+                                </syncfusion:SfNavigationDrawer.FooterItems>
+                                <behaviours:Interaction.Triggers>
+                                    <behaviours:EventTrigger EventName="ItemClicked">
+                                        <behaviours:InvokeCommandAction Command="{Binding ComandoClick}" PassEventArgsToCommand="True" />
+                                    </behaviours:EventTrigger>
+                                    <behaviours:EventTrigger EventName="Opened">
+                                        <behaviours:InvokeCommandAction Command="{Binding ComandoHomeAbierto}" PassEventArgsToCommand="True" />
+                                    </behaviours:EventTrigger>
+                                    <behaviours:EventTrigger EventName="Closed">
+                                        <behaviours:InvokeCommandAction Command="{Binding ComandoHomeCerrado}" PassEventArgsToCommand="True" />
+                                    </behaviours:EventTrigger>
+                                </behaviours:Interaction.Triggers>
+
+                            </syncfusion:SfNavigationDrawer>
 
 
 
 
-                    </Grid>
-                    <Grid DockPanel.Dock="Right">
-                        <Border
-                            Margin="-10,10,10,10"
-                            BorderBrush="#FF2B8343"
-                            BorderThickness="0.1"
-                            CornerRadius="0,20,20,0"
-                            Style="{DynamicResource BorderFondoDegradoBlanco}" />
-                        <WrapPanel>
-                            <ContentControl
-                                x:Name="ControlUsuario"
-                                HorizontalContentAlignment="Stretch"
-                                VerticalContentAlignment="Stretch"
-                                Content="{Binding ControlSeleccionado}" />
-                        </WrapPanel>
-                    </Grid>
-                </DockPanel>
-
+                        </Grid>
+                        <Grid DockPanel.Dock="Right">
+                            <Border
+                                Margin="-10,10,10,10"
+                                BorderBrush="#FF2B8343"
+                                BorderThickness="0.1"
+                                CornerRadius="0,20,20,0"
+                                Style="{DynamicResource BorderFondoDegradoBlanco}" />
+                            <WrapPanel>
+                                <ContentControl
+                                    x:Name="ControlUsuario"
+                                    HorizontalContentAlignment="Stretch"
+                                    VerticalContentAlignment="Stretch"
+                                    Content="{Binding ControlSeleccionado}" />
+                            </WrapPanel>
+                        </Grid>
+                    </DockPanel>
+                </syncfusion:SfBusyIndicator>
             </DockPanel>
         </Grid>
     </Border>

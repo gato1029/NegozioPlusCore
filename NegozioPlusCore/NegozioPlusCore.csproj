@@ -61,6 +61,7 @@
     <Reference Include="Syncfusion.Licensing, Version=19.3460.0.48, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.Licensing.19.3.0.48\lib\net46\Syncfusion.Licensing.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfBusyIndicator.WPF, Version=19.3460.0.43, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.SfChart.WPF, Version=19.3460.0.48, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.SfChart.WPF.19.3.0.48\lib\net46\Syncfusion.SfChart.WPF.dll</HintPath>
     </Reference>
@@ -149,6 +150,14 @@
     <Compile Include="MVVM\Categorias\VM\CategoriasAgregarVM.cs" />
     <Compile Include="MVVM\Categorias\VM\CategoriasVM.cs" />
     <Compile Include="MVVM\Categorias\VM\CategoriasXAML.cs" />
+    <Compile Include="MVVM\Login\LoginVentana.xaml.cs">
+      <DependentUpon>LoginVentana.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Login\VM\LoginVentanaVM.cs" />
+    <Compile Include="NucleoRealm\Controladores\BaseController.cs" />
+    <Compile Include="NucleoRealm\Controladores\EmpresaController.cs" />
+    <Compile Include="NucleoRealm\Controladores\UsuarioController.cs" />
+    <Compile Include="NucleoRealm\ModelosBson\UsuarioLogeado.cs" />
     <Compile Include="MVVM\Principal\VentanaPrincipal.xaml.cs">
       <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
     </Compile>
@@ -173,11 +182,12 @@
       <DependentUpon>UsuarioVentana.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Usuarios\VM\UsuarioVentanaVM.cs" />
-    <Compile Include="MVVM\Usuarios\VM\UsuarioVM.cs" />
-    <Compile Include="MVVM\Usuarios\VM\UsuarioXAML.cs" />
+    <Compile Include="MVVM\Usuarios\VM\UsuarioUCVM.cs" />
+    <Compile Include="NucleoRealm\Modelos\Empresa.cs" />
     <Compile Include="NucleoRealm\Modelos\Usuario.cs" />
     <Compile Include="NucleoRealm\Modelos\UsuarioEmpresa.cs" />
     <Compile Include="Recursos\ObjetosMenu.cs" />
+    <Compile Include="Utilitarios\AdministradorVentanas.cs" />
     <Compile Include="Utilitarios\NotificadorGenerico.cs" />
     <Compile Include="Utilitarios\ServiceLocator.cs" />
     <Page Include="MainWindow.xaml">
@@ -192,22 +202,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MVVM\Almacen\Almacen.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\Almacen\AlmacenAgregar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\Categorias\Categorias.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\Categorias\CategoriasAgregar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MVVM\Principal\PrincipalPagina.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -233,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Usuarios\UsuarioVentana.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Recursos\DataTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -326,6 +324,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Recursos\Imagenes\guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Imagenes\login.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Fody.6.5.3\build\Fody.targets" Condition="Exists('packages\Fody.6.5.3\build\Fody.targets')" />

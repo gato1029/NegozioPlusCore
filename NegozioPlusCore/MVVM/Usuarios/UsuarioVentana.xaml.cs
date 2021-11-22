@@ -23,17 +23,11 @@ namespace NegozioPlusCore.MVVM.Usuarios
         public bool IsClosed { get; private set; }
         public UsuarioVentana()
         {
-            InitializeComponent();
-            this.DataContext = new UsuarioVentanaVM();
+            InitializeComponent();            
         }
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-            IsClosed = true;
-        }
+
         private void BotonCerrar_Click(object sender, RoutedEventArgs e)
-        {
-       
+        {       
             this.Close();
         }
 

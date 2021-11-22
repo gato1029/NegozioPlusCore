@@ -1,14 +1,16 @@
-﻿<Application x:Class="NegozioPlusCore.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:NegozioPlusCore"
-             StartupUri="/mvvm/principal/VentanaPrincipal.xaml">
+﻿<Application
+    x:Class="NegozioPlusCore.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:NegozioPlusCore"
+    StartupUri="/mvvm/Login/LoginVentana.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Recursos/EstiloBase.xaml"/>
-                <ResourceDictionary Source="Recursos/ImagenesDiccionario.xaml"/>
-                </ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Recursos/EstiloBase.xaml" />
+                <ResourceDictionary Source="Recursos/ImagenesDiccionario.xaml" />
+                <ResourceDictionary Source="Recursos/DataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

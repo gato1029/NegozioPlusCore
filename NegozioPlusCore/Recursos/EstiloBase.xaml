@@ -10,6 +10,7 @@
     </Style>
     <Style x:Key="FuenteBaseTextBlock" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="/Recursos/Fuentes/Fenix-Regular.TTF #Fenix" />
+        <Setter Property="Foreground" Value="Black" />
     </Style>
     <Style x:Key="FuenteBaseBarraLateralMenu" TargetType="syncfusion:SfNavigationDrawer">
         <Setter Property="FontFamily" Value="/Recursos/Fuentes/Fenix-Regular.TTF #Fenix" />
@@ -38,6 +39,11 @@
     <Style x:Key="FuenteBaseListCheckBox" TargetType="syncfusion:CheckListBox">
         <Setter Property="FontFamily" Value="/Recursos/Fuentes/Fenix-Regular.TTF #Fenix" />
         <Setter Property="FontSize" Value="15" />
+    </Style>
+
+    <Style x:Key="FuenteBaseSfBusyIndicatorNormal" TargetType="syncfusion:SfBusyIndicator">
+        <Setter Property="AnimationType" Value="Flower" />
+
     </Style>
 
     <!--#region TextBlock-->
@@ -420,6 +426,90 @@
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter Property="Background" Value="PaleVioletRed" />
+                            <Setter TargetName="txt" Property="Text" Value="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CheckBoxAdmin" TargetType="CheckBox">
+        <Setter Property="IsChecked" Value="False" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="#888" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Border
+                        Width="130"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="10">
+                        <Grid>
+                            <Border
+                                x:Name="border"
+                                Width="25"
+                                Height="25"
+                                Margin="1,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Background="White"
+                                CornerRadius="9">
+                                <Border.RenderTransform>
+                                    <TranslateTransform X="0" />
+                                </Border.RenderTransform>
+                            </Border>
+                            <TextBlock
+                                x:Name="txt"
+                                Margin="9,0"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="{TemplateBinding Content}">
+                                <TextBlock.RenderTransform>
+                                    <TranslateTransform X="18" />
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="txt" Property="Text" Value="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter Property="Background" Value="BlueViolet" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                            To="100"
+                                            Duration="00:00:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="txt"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                            To="0"
+                                            Duration="00:00:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="border"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                            To="0"
+                                            Duration="00:00:0.2" />
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="txt"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                            To="18"
+                                            Duration="00:00:0.2" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Background" Value="ForestGreen" />
                             <Setter TargetName="txt" Property="Text" Value="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
