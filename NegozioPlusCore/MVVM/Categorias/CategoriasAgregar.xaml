@@ -1,0 +1,108 @@
+﻿<Window x:Class="NegozioPlusCore.MVVM.Categorias.CategoriasAgregar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Categorias"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        Title="UsuarioVentana"
+        Width="600"
+        Height="600"
+        AllowsTransparency="True"
+        Background="{x:Null}"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        mc:Ignorable="d">
+    <Border CornerRadius="10" Style="{DynamicResource BorderFondoBase}">
+        <DockPanel LastChildFill="True">
+            <Border
+                x:Name="BarraTop"
+                Height="50"
+                Margin="10"
+                CornerRadius="5"
+                DockPanel.Dock="Top"
+                MouseDown="BarraTop_MouseDown"
+                Style="{DynamicResource BorderFondoDegradoColor}">
+                <Grid Height="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel
+                        Grid.Column="1"
+                        Height="50"
+                        HorizontalAlignment="Stretch" />
+                    <StackPanel
+                        Grid.Column="0"
+                        Height="50"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Image Style="{DynamicResource ImgProductos}" />
+                        <TextBlock
+                            Margin="10,0,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Style="{DynamicResource FuenteBaseTextBlock}"
+                            Text="Categoria" />
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Column="2"
+                        Height="50"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="BotonCerrar"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Click="BotonCerrar_Click"
+                            Style="{DynamicResource BotonImagen}">
+                            <Image Style="{DynamicResource ImgBotonCerrar}" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border
+                Margin="20"
+                CornerRadius="15"
+                DockPanel.Dock="Bottom"
+                Style="{DynamicResource BorderFondoDegradoBlanco}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <syncfusion:SfTextInputLayout
+                        Grid.Row="0"
+                        Margin="20,20,20,0"
+                        VerticalAlignment="Center"
+                        HelperText="Ingresa el nombre de la categoria"
+                        Hint="Categoria"
+                        LeadingViewPosition="Inside"
+                        Style="{DynamicResource NormalTextInput}">
+                        <TextBox Padding="10" />
+                        <syncfusion:SfTextInputLayout.LeadingView>
+                            <Image Style="{DynamicResource ImgProductos}" />
+                        </syncfusion:SfTextInputLayout.LeadingView>
+                    </syncfusion:SfTextInputLayout>
+                    <syncfusion:ButtonAdv
+                        x:Name="button"
+                        Grid.Row="4"
+                        Margin="20"
+                        HorizontalAlignment="Center"
+                        Background="Transparent"
+                        BorderBrush="Gray"
+                        FontSize="18"
+                        IconHeight="50"
+                        IconWidth="50"
+                        Label="Guardar"
+                        SizeMode="Normal"
+                        SmallIcon="/Recursos/Imagenes/guardar.png" />
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Border>
+</Window>

@@ -1,4 +1,8 @@
-﻿using NegozioPlusCore.MVVM.Principal.VM;
+﻿using NegozioPlusCore.MVVM.Almacen;
+using NegozioPlusCore.MVVM.Categorias;
+using NegozioPlusCore.MVVM.Principal.VM;
+using NegozioPlusCore.MVVM.Productos;
+using NegozioPlusCore.MVVM.Tiendas;
 using NegozioPlusCore.MVVM.Usuarios;
 using NegozioPlusCore.Utilitarios;
 using System;
@@ -85,6 +89,24 @@ namespace NegozioPlusCore.Recursos
                             ServiceLocator.Instance.RegisterService(new UsuarioUC());                            
                         }
                         return ServiceLocator.Instance.GetService<UsuarioUC>();
+                    case "Almacen":
+                        if (!ServiceLocator.Instance.ExistService<Almacen>())
+                        {
+                            ServiceLocator.Instance.RegisterService(new Almacen());
+                        }
+                        return ServiceLocator.Instance.GetService<Almacen>();
+                    case "Productos":
+                        if (!ServiceLocator.Instance.ExistService<Producto>())
+                        {
+                            ServiceLocator.Instance.RegisterService(new Producto());
+                        }
+                        return ServiceLocator.Instance.GetService<Producto>();
+                    case "Tiendas":
+                        if (!ServiceLocator.Instance.ExistService<Tiendas>())
+                        {
+                            ServiceLocator.Instance.RegisterService(new Tiendas());
+                        }
+                        return ServiceLocator.Instance.GetService<Tiendas>();
                     default:
                         break;
                 }
@@ -94,11 +116,11 @@ namespace NegozioPlusCore.Recursos
                 switch (itemMenu)
                 {
                     case "Categorias":
-                        if (!ServiceLocator.Instance.ExistService<UsuarioUC>())
+                        if (!ServiceLocator.Instance.ExistService<Categorias>())
                         {
-                            ServiceLocator.Instance.RegisterService(new UsuarioUC());
+                            ServiceLocator.Instance.RegisterService(new Categorias());
                         }
-                        return ServiceLocator.Instance.GetService<UsuarioUC>();
+                        return ServiceLocator.Instance.GetService<Categorias>();
                     default:
                         break;
                 }

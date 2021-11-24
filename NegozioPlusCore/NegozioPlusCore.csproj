@@ -132,6 +132,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MVVM\Almacen\Almacen.xaml.cs">
+      <DependentUpon>Almacen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Almacen\AlmacenAgregar.xaml.cs">
+      <DependentUpon>AlmacenAgregar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Almacen\VM\AlmacenAgregarVM.cs" />
+    <Compile Include="MVVM\Almacen\VM\AlmacenVM.cs" />
+    <Compile Include="MVVM\Almacen\VM\AlmacenXAML.cs" />
+    <Compile Include="MVVM\Categorias\Categorias.xaml.cs">
+      <DependentUpon>Categorias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Categorias\CategoriasAgregar.xaml.cs">
+      <DependentUpon>CategoriasAgregar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Categorias\VM\CategoriasAgregarVM.cs" />
+    <Compile Include="MVVM\Categorias\VM\CategoriasVM.cs" />
+    <Compile Include="MVVM\Categorias\VM\CategoriasXAML.cs" />
     <Compile Include="MVVM\Login\LoginVentana.xaml.cs">
       <DependentUpon>LoginVentana.xaml</DependentUpon>
     </Compile>
@@ -143,6 +161,20 @@
     <Compile Include="MVVM\Principal\VentanaPrincipal.xaml.cs">
       <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\Productos\Producto.xaml.cs">
+      <DependentUpon>Producto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Productos\VM\ProductoVM.cs" />
+    <Compile Include="MVVM\Productos\VM\ProductoXAML.cs" />
+    <Compile Include="MVVM\Tiendas\Tiendas.xaml.cs">
+      <DependentUpon>Tiendas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Tiendas\TiendasAgregar.xaml.cs">
+      <DependentUpon>TiendasAgregar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Tiendas\VM\TiendasAgregarVM.cs" />
+    <Compile Include="MVVM\Tiendas\VM\TiendasVM.cs" />
+    <Compile Include="MVVM\Tiendas\VM\TiendasXAML.cs" />
     <Compile Include="MVVM\Usuarios\UsuarioUC.xaml.cs">
       <DependentUpon>UsuarioUC.xaml</DependentUpon>
     </Compile>
@@ -170,15 +202,43 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MVVM\Login\LoginVentana.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="MVVM\Almacen\Almacen.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Almacen\AlmacenAgregar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Categorias\Categorias.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Categorias\CategoriasAgregar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Login\LoginVentana.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MVVM\Principal\PrincipalPagina.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MVVM\Principal\VentanaPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Productos\Producto.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Tiendas\Tiendas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MVVM\Tiendas\TiendasAgregar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
