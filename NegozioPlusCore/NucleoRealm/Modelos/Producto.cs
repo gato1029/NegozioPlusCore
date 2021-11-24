@@ -25,10 +25,6 @@ namespace NegozioPlusCore.NucleoRealm.Modelos
         public string Particion { get; set; }
         [MapTo("precio")]
         public double? Precio { get; set; }
-        [MapTo("stock")]
-        public IList<Producto_stock> Stock { get; }
-        [MapTo("total")]
-        public double? Total { get; set; }
         [MapTo("unidad")]
         public string Unidad { get; set; }
     }

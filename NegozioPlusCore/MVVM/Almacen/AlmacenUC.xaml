@@ -1,11 +1,12 @@
 ﻿<UserControl
-    x:Class="NegozioPlusCore.MVVM.Categorias.Categorias"
+    x:Class="NegozioPlusCore.MVVM.Almacen.AlmacenUC"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-    xmlns:vm="[vm ]clr-namespace:NegozioPlusCore.MVVM.Categorias.VM"
+    xmlns:vm="[vm ]clr-namespace:NegozioPlusCore.MVVM.Almacen.VM" 
+    xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
     HorizontalAlignment="Stretch"
     VerticalAlignment="Stretch"
     HorizontalContentAlignment="Stretch"
@@ -13,6 +14,12 @@
     d:DesignHeight="800"
     d:DesignWidth="1000"
     mc:Ignorable="d">
+
+    <behaviours:Interaction.Triggers>
+        <behaviours:EventTrigger EventName="Loaded">
+            <behaviours:InvokeCommandAction Command="{Binding ComandoVentanaCargada}" PassEventArgsToCommand="True" />
+        </behaviours:EventTrigger>
+    </behaviours:Interaction.Triggers>
 
     <DockPanel>
         <StackPanel Margin="20" DockPanel.Dock="Top">
@@ -29,7 +36,7 @@
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Stretch"
-                        Style="{DynamicResource ImgProductos}" />
+                        Style="{DynamicResource ImgAlmacen}" />
                     <StackPanel
                         Grid.Column="1"
                         HorizontalAlignment="Left"
@@ -40,13 +47,13 @@
                             FontSize="40"
                             FontWeight="Bold"
                             Style="{DynamicResource FuenteBaseTextBlock}"
-                            Text="Categorias" />
+                            Text="Almacenes" />
                         <TextBlock
                             VerticalAlignment="Center"
                             FontSize="20"
                             FontWeight="Light"
                             Style="{DynamicResource FuenteBaseTextBlock}"
-                            Text="Cree y administre las categorias que le ayudaran a administrar su empresa."
+                            Text="Cree y administre los almacenes que le ayudaran a administrar su empresa."
                             TextWrapping="Wrap" />
                     </StackPanel>
                 </Grid>
@@ -83,7 +90,7 @@
                         Margin="5,20,0,0"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
-                        Hint="Buscar Categoria"
+                        Hint="Buscar Almacen"
                         HintFloatMode="None"
                         Style="{DynamicResource BuscarTextInput}">
                         <TextBox Padding="10" />
@@ -97,17 +104,11 @@
                         <Image Style="{DynamicResource ImgBotonAgregar}" />
                     </Button>
                     <Button
-                        Grid.Column="4"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Style="{DynamicResource BotonImagen}">
-                        <Image Style="{DynamicResource ImgBotonModificar}" />
-                    </Button>
-                    <Button
-                        Grid.Column="5"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Style="{DynamicResource BotonImagen}">
+                            Grid.Column="4"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Command="{Binding ComandoClickEliminar}"
+                            Style="{DynamicResource BotonImagen}">
                         <Image Style="{DynamicResource ImgBotonEliminar}" />
                     </Button>
                 </Grid>
@@ -121,28 +122,35 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <syncfusion:SfDataGrid
+                        <syncfusion:SfDataGrid                          
                             Grid.Row="0"
-                            Margin="10,10,10,10"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Top"
-                            AllowCollectionView="True"
-                            AllowDraggingColumns="True"
-                            AllowFiltering="True"
-                            AllowResizingColumns="True"
-                            AllowSorting="True"
-                            AutoGenerateColumns="False"
-                            BorderBrush="Transparent"
-                            ColumnSizer="Star"
-                            HeaderLinesVisibility="Both"
-                            ItemsSource="{Binding ElementName=dataPager, Path=PagedSource}"
-                            ScrollMode="Async"
-                            SelectionMode="Extended"
-                            SelectionUnit="Any"
-                            ShowRowHeader="True"
-                            Style="{DynamicResource DataGrid}">
+                                Margin="10,10,10,10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                AllowCollectionView="True"
+                                AllowDraggingColumns="True"
+                                AllowFiltering="True"
+                                AllowResizingColumns="True"
+                                AllowSorting="True"
+                                AutoGenerateColumns="False"
+                                BorderBrush="Transparent"
+                                ColumnSizer="Star"
+                                HeaderLinesVisibility="Both"
+                                ItemsSource="{Binding ElementName=dataPager, Path=PagedSource}"
+                                ScrollMode="Async"
+                                SelectedItem="{Binding ItemSeleccionado, Mode=TwoWay}"
+                                SelectionMode="Extended"
+                                SelectionUnit="Row"
+                                ShowRowHeader="True"
+                                Style="{DynamicResource DataGrid}">
+                            <behaviours:Interaction.Triggers>
+                                <behaviours:EventTrigger EventName="MouseDoubleClick">
+                                    <behaviours:InvokeCommandAction Command="{Binding ComandoDobleClick}" PassEventArgsToCommand="True" />
+                                </behaviours:EventTrigger>
+                            </behaviours:Interaction.Triggers>
                             <syncfusion:SfDataGrid.Columns>
                                 <syncfusion:GridTextColumn MappingName="Nombre" />
+                                <syncfusion:GridTextColumn MappingName="Direccion" />
                             </syncfusion:SfDataGrid.Columns>
                         </syncfusion:SfDataGrid>
                         <syncfusion:SfDataPager
@@ -153,7 +161,7 @@
                             VerticalAlignment="Center"
                             Orientation="Horizontal"
                             PageSize="50"
-                            Source="{Binding Coleccion}" />
+                            Source="{Binding Coleccion, Mode=TwoWay}" />
                     </Grid>
                 </Border>
             </Grid>
