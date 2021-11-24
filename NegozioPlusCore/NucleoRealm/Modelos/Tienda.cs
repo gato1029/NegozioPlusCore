@@ -18,9 +18,9 @@ namespace NegozioPlusCore.NucleoRealm.Modelos
         [MapTo("idEmp")]
         public ObjectId? IdEmp { get; set; }
         [MapTo("latitud")]
-        public string Latitud { get; set; }
+        public double? Latitud { get; set; }
         [MapTo("longitud")]
-        public string Longitud { get; set; }
+        public double? Longitud { get; set; }
         [MapTo("nombre")]
         public string Nombre { get; set; }
         [MapTo("particion")]

@@ -18,8 +18,8 @@ namespace NegozioPlusCore.MVVM.Tiendas.VM
 
         private string direccion;
         private string nombre;
-        private string latitud;
-        private string longitud;
+        private double latitud;
+        private double longitud;
         private string idRealm;
         private Tienda tiendaRealm;
         public ICommand ComandoClickGuardar => new RelayCommand<Window>(ClickGuardar, (o) => { return true; });
@@ -71,12 +71,12 @@ namespace NegozioPlusCore.MVVM.Tiendas.VM
             get { return this.nombre; }
             set { SetValue(ref this.nombre, value); }
         }
-        public string Latitud
+        public double Latitud
         {
             get { return this.latitud; }
             set { SetValue(ref this.latitud, value); }
         }
-        public string Longitud
+        public double Longitud
         {
             get { return this.longitud; }
             set { SetValue(ref this.longitud, value); }
@@ -95,8 +95,8 @@ namespace NegozioPlusCore.MVVM.Tiendas.VM
                 idRealm = tiendaRealm.Id.ToString();
                 nombre = tiendaRealm.Nombre;
                 direccion = tiendaRealm.Direccion;
-                longitud = tiendaRealm.Longitud;
-                latitud = tiendaRealm.Latitud;
+                longitud = (double)tiendaRealm.Longitud;
+                latitud = (double)tiendaRealm.Latitud;
                 CheckListModulos = new ObservableCollection<string>(tiendaRealm.Usuarios);
             }
         }
