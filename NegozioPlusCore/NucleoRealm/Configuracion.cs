@@ -39,7 +39,7 @@ namespace NegozioPlusCore.NucleoRealm
             _cluster = "mongodb-atlas";
             _mongoDB = "Principal";
             AppRealm = Realms.Sync.App.Create(_appId);
-            _particiones = new Dictionary<string, Particion>();
+            _particiones = new Dictionary<string, Particion>();            
         }
 
         public Particion InstanciarParticion(string particion)
@@ -74,7 +74,7 @@ namespace NegozioPlusCore.NucleoRealm
         {
             foreach (var item in _particiones)
             {
-                // item.Value.cerrar();
+                 item.Value.cerrar();
             }
         }
     }

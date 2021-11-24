@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using AsyncTask = System.Threading.Tasks.Task;
 namespace NegozioPlusCore.NucleoRealm
 {
-    class Particion
+    public class Particion
     {
         private string _particion;
         private SyncConfiguration _syncConfig;

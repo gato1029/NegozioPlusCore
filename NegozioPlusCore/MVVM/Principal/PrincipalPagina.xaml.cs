@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NegozioPlusCore.Utilitarios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,12 +23,12 @@ namespace NegozioPlusCore.MVVM.Principal
         public PrincipalPagina()
         {
             InitializeComponent();
+            ServiceLocator.Instance.RegisterService<PrincipalPagina>(this);
         }
 
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
 
-
-      
-
-    
+        }
     }
 }
