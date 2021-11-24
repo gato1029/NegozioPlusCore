@@ -25,18 +25,8 @@ namespace NegozioPlusCore.NucleoRealm.Modelos
         public string Particion { get; set; }
         [MapTo("precio")]
         public double? Precio { get; set; }
-        [MapTo("stock")]
-        public IList<Producto_stock> Stock { get; }
-        [MapTo("total")]
-        public double? Total { get; set; }
         [MapTo("unidad")]
         public string Unidad { get; set; }
     }
-    public class Producto_stock : EmbeddedObject
-    {
-        [MapTo("cantidad")]
-        public double? Cantidad { get; set; }
-        [MapTo("idAlmacen")]
-        public ObjectId? IdAlmacen { get; set; }
-    }
+ 
 }

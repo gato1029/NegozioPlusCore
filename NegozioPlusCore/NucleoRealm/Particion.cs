@@ -60,7 +60,7 @@ namespace NegozioPlusCore.NucleoRealm
             }
             catch (Exception ex)
             {
-                 MessageBox.Show("Particion no encontrada");
+                 MessageBox.Show("Particion no encontrada"+ ex.InnerException);
             }
         }
         public void cerrar()
