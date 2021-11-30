@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Categorias"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:vm="[vm ]clr-namespace:NegozioPlusCore.MVVM.Categorias.VM"
         x:Name="VentanaActual"
         Title="UsuarioVentana"
         Width="600"
@@ -81,6 +82,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
@@ -97,19 +99,40 @@
                             <Image Style="{DynamicResource ImgProductos}" />
                         </syncfusion:SfTextInputLayout.LeadingView>
                     </syncfusion:SfTextInputLayout>
-                    <syncfusion:ButtonAdv
-                        x:Name="button"
-                        Grid.Row="4"
-                        Margin="20"
-                        HorizontalAlignment="Center"
-                        Background="Transparent"
-                        BorderBrush="Gray"
-                        FontSize="18"
-                        IconHeight="50"
-                        IconWidth="50"
-                        Label="Guardar"
-                        SizeMode="Normal"
-                        SmallIcon="/Recursos/Imagenes/guardar.png" />
+                    <syncfusion:SfTextInputLayout
+                        Grid.Row="1"
+                        Visibility="{Binding SubCatVisible, Mode=TwoWay}"
+                        
+                        Margin="20,20,20,0"
+                        
+                        VerticalAlignment="Center"
+                        HelperText="Padre de la categoria"
+                        
+                        LeadingViewPosition="Inside"
+                        Style="{DynamicResource NormalTextInput}">
+                        <TextBox IsReadOnly="True" Padding="10" Text="{Binding Padre, Mode=TwoWay}" />
+                        <syncfusion:SfTextInputLayout.LeadingView>
+                            <Image Style="{DynamicResource ImgProductos}" />
+                        </syncfusion:SfTextInputLayout.LeadingView>
+                    </syncfusion:SfTextInputLayout>
+                    <!--syncfusion:SfTextInputLayout
+                        Grid.Row="1"
+                        Visibility="{Binding SubCatVisible, Mode=TwoWay}"
+                        Margin="20,20,20,0"
+                        VerticalAlignment="Center"
+                        HelperText="Selecciona a que modulos tendra acceso el usuario."
+                        Hint="Modulos"
+                        LeadingViewPosition="Inside"
+                        Style="{DynamicResource NormalTextInput}">
+                        <syncfusion:SfTextInputLayout.LeadingView>
+                            <Image Style="{DynamicResource ImgUsuarios}" />
+                        </syncfusion:SfTextInputLayout.LeadingView>
+                        <syncfusion:ComboBoxAdv
+                            AllowMultiSelect="True"
+                            AllowSelectAll="False"                           
+                            ItemsSource="{Binding CheckListModulos}"
+                            SelectedItems="{Binding CheckListModulosSeleccionados, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </syncfusion:SfTextInputLayout-->
                     <syncfusion:ButtonAdv
                         x:Name="button2"
                         Grid.Row="4"

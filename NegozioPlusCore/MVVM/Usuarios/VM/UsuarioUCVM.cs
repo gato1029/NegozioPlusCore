@@ -75,6 +75,8 @@ namespace NegozioPlusCore.MVVM.Usuarios.VM
             get { return this.itemSeleccionado; }
             set { SetValue(ref this.itemSeleccionado, value); }
         }
-        
+
+        public ObservableCollection<Usuario> Coleccion1 { get => coleccion; set => coleccion = value; }
+
     }
 }

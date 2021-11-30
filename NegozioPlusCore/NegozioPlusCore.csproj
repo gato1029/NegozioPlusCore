@@ -171,7 +171,6 @@
       <DependentUpon>ProductoUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Productos\VM\ProductoUCVM.cs" />
-    <Compile Include="MVVM\Productos\VM\ProductoXAML.cs" />
     <Compile Include="MVVM\Tiendas\TiendasUC.xaml.cs">
       <DependentUpon>TiendasUC.xaml</DependentUpon>
     </Compile>

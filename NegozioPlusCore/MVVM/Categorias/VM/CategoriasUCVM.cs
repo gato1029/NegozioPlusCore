@@ -18,7 +18,8 @@ namespace NegozioPlusCore.MVVM.Categorias.VM
 {
     class CategoriasUCVM : NotificadorGenerico
     {
-        private ObservableCollection<CategoriaProducto> coleccion;
+        private ObservableCollection<CategoriaProducto> coleccion;       
+
         private bool cargandoBusy;
         private CategoriaProducto itemSeleccionado;
         public ICommand ComandoClickAgregar => new RelayCommand<Object>(ClickAgregar, (o) => { return true; });
@@ -81,7 +82,7 @@ namespace NegozioPlusCore.MVVM.Categorias.VM
             get { return this.itemSeleccionado; }
             set { SetValue(ref this.itemSeleccionado, value); }
         }
-
+        
     }
 }
 

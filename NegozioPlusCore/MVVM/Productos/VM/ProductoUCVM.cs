@@ -20,6 +20,7 @@ namespace NegozioPlusCore.MVVM.Productos.VM
     class ProductoUCVM : NotificadorGenerico
     {
         private ObservableCollection<Producto> coleccion;
+        private ObservableCollection<CategoriaProducto> coleccionCategorias;
         private bool cargandoBusy;
         private Producto itemSeleccionado;
         public ICommand ComandoClickAgregar => new RelayCommand<Object>(ClickAgregar, (o) => { return true; });
@@ -31,6 +32,7 @@ namespace NegozioPlusCore.MVVM.Productos.VM
         {
             CargandoBusy = true;
             Coleccion = await ProductoController.Instance.ObtenerTodo();
+            ColeccionCategorias = await CategoriaProductoController.Instance.ObtenerTodo();
             CargandoBusy = false;
         }
         private async void ClickEliminar(object obj)
@@ -46,7 +48,7 @@ namespace NegozioPlusCore.MVVM.Productos.VM
         private void ClickAgregar(object obj)
         {
             Producto nuevo = new Producto();
-            ProductoVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<ProductoVentana>("0", new ProductoVentanaVM(nuevo));
+            ProductoVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<ProductoVentana>("0", new ProductoVentanaVM(nuevo, ColeccionCategorias));
             ventana.Owner = ServiceLocator.Instance.GetService<VentanaPrincipal>();
             ventana.Show();
         }
@@ -58,7 +60,7 @@ namespace NegozioPlusCore.MVVM.Productos.VM
         {
             if (itemSeleccionado != null)
             {
-                ProductoVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<ProductoVentana>(itemSeleccionado.Id.ToString(), new ProductoVentanaVM(itemSeleccionado));
+                ProductoVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<ProductoVentana>(itemSeleccionado.Id.ToString(), new ProductoVentanaVM(itemSeleccionado, ColeccionCategorias));
                 ventana.Owner = ServiceLocator.Instance.GetService<VentanaPrincipal>();
                 ventana.Show();
             }
@@ -71,6 +73,11 @@ namespace NegozioPlusCore.MVVM.Productos.VM
         {
             get { return this.coleccion; }
             set { SetValue(ref this.coleccion, value); }
+        }
+        public ObservableCollection<CategoriaProducto> ColeccionCategorias
+        {
+            get { return this.coleccionCategorias; }
+            set { SetValue(ref this.coleccionCategorias, value); }
         }
         public bool CargandoBusy
         {

@@ -30,6 +30,9 @@ namespace NegozioPlusCore.NucleoRealm.Controladores
                 data.Descrip = datoNuevo.Descrip;
                 data.Precio = datoNuevo.Precio;
                 data.Unidad = datoNuevo.Unidad;
+                data.IdCatProd = datoNuevo.IdCatProd;
+                data.Habilitado = datoNuevo.Habilitado;
+                data.ReqAlmacen = datoNuevo.ReqAlmacen;
             });
         }
     }

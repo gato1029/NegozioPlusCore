@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-    xmlns:vm="[vm ]clr-namespace:NegozioPlusCore.MVVM.Categorias.VM"
+    xmlns:vm="[vm ]clr-namespace:NegozioPlusCore.MVVM.Categorias.VM" xmlns:vm1="clr-namespace:NegozioPlusCore.MVVM.Categorias.VM" d:DataContext="{d:DesignInstance Type=vm1:CategoriasUCVM}"
     HorizontalAlignment="Stretch"
     VerticalAlignment="Stretch"
     HorizontalContentAlignment="Stretch"
@@ -122,7 +122,7 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <syncfusion:SfDataGrid
+                        <!--syncfusion:SfDataGrid
                             Grid.Row="0"
                             Margin="10,10,10,10"
                                 HorizontalAlignment="Center"
@@ -151,16 +151,34 @@
                             <syncfusion:SfDataGrid.Columns>
                                 <syncfusion:GridTextColumn MappingName="Nombre" />
                             </syncfusion:SfDataGrid.Columns>
-                        </syncfusion:SfDataGrid>
-                        <syncfusion:SfDataPager
-                                x:Name="dataPager"
-                                Grid.Row="1"
-                                Margin="0,0,0,20"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Orientation="Horizontal"
-                                PageSize="50"
-                                Source="{Binding Coleccion, Mode=TwoWay}" />
+                        </syncfusion:SfDataGrid-->
+                        <!--syncfusion:SfTreeGrid 
+                            Grid.Row="0"
+                            Name="treeGrid"
+                            
+                            ChildPropertyName="Padre"
+                            ItemsSource="{Binding Coleccion}"
+                            ParentPropertyName="Id"
+                            SelfRelationRootValue="-1" /-->
+                        <syncfusion:SfTreeGrid 
+                            Grid.Row="0"
+                            Margin="10,10,10,10"
+                            AutoGenerateColumns="False"
+                            SelectedItem="{Binding ItemSeleccionado, Mode=TwoWay}"
+                            ChildPropertyName="Padre" 
+                            ItemsSource="{Binding Coleccion}"
+                            ParentPropertyName="Categoria"
+                            SelfRelationRootValue="/">
+                            <behaviours:Interaction.Triggers>
+                                <behaviours:EventTrigger EventName="MouseDoubleClick">
+                                    <behaviours:InvokeCommandAction Command="{Binding ComandoDobleClick}" PassEventArgsToCommand="True" />
+                                </behaviours:EventTrigger>
+                            </behaviours:Interaction.Triggers>
+                            <syncfusion:SfTreeGrid.Columns>
+                                <syncfusion:TreeGridTextColumn HeaderText="Categoria" MappingName="Nombre"/>
+                            </syncfusion:SfTreeGrid.Columns>
+                        </syncfusion:SfTreeGrid>
+                        
                     </Grid>
                 </Border>
             </Grid>
