@@ -26,10 +26,8 @@ namespace NegozioPlusCore.NucleoRealm.Controladores
         }
         public async Task Verificar(bool refresh)
         {
-            
             if (particion._realm == null || particion._realm.IsClosed)
             {
-                
                 await particion.ConectarParticion();
             }
             else

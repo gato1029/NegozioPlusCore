@@ -1,7 +1,8 @@
 ﻿<UserControl
-    x:Class="NegozioPlusCore.MVVM.Tiendas.Tiendas"
+    x:Class="NegozioPlusCore.MVVM.Tiendas.TiendasUC"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
@@ -13,6 +14,12 @@
     d:DesignHeight="800"
     d:DesignWidth="1000"
     mc:Ignorable="d">
+
+    <behaviours:Interaction.Triggers>
+        <behaviours:EventTrigger EventName="Loaded">
+            <behaviours:InvokeCommandAction Command="{Binding ComandoVentanaCargada}" PassEventArgsToCommand="True" />
+        </behaviours:EventTrigger>
+    </behaviours:Interaction.Triggers>
 
     <DockPanel>
         <StackPanel Margin="20" DockPanel.Dock="Top">
@@ -100,13 +107,7 @@
                         Grid.Column="4"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
-                        Style="{DynamicResource BotonImagen}">
-                        <Image Style="{DynamicResource ImgBotonModificar}" />
-                    </Button>
-                    <Button
-                        Grid.Column="5"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
+                        Command="{Binding ComandoClickEliminar}"
                         Style="{DynamicResource BotonImagen}">
                         <Image Style="{DynamicResource ImgBotonEliminar}" />
                     </Button>
@@ -124,23 +125,29 @@
                         <syncfusion:SfDataGrid
                             Grid.Row="0"
                             Margin="10,10,10,10"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Top"
-                            AllowCollectionView="True"
-                            AllowDraggingColumns="True"
-                            AllowFiltering="True"
-                            AllowResizingColumns="True"
-                            AllowSorting="True"
-                            AutoGenerateColumns="False"
-                            BorderBrush="Transparent"
-                            ColumnSizer="Star"
-                            HeaderLinesVisibility="Both"
-                            ItemsSource="{Binding ElementName=dataPager, Path=PagedSource}"
-                            ScrollMode="Async"
-                            SelectionMode="Extended"
-                            SelectionUnit="Any"
-                            ShowRowHeader="True"
-                            Style="{DynamicResource DataGrid}">
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                AllowCollectionView="True"
+                                AllowDraggingColumns="True"
+                                AllowFiltering="True"
+                                AllowResizingColumns="True"
+                                AllowSorting="True"
+                                AutoGenerateColumns="False"
+                                BorderBrush="Transparent"
+                                ColumnSizer="Star"
+                                HeaderLinesVisibility="Both"
+                                ItemsSource="{Binding ElementName=dataPager, Path=PagedSource}"
+                                ScrollMode="Async"
+                                SelectedItem="{Binding ItemSeleccionado, Mode=TwoWay}"
+                                SelectionMode="Extended"
+                                SelectionUnit="Row"
+                                ShowRowHeader="True"
+                                Style="{DynamicResource DataGrid}">
+                            <behaviours:Interaction.Triggers>
+                                <behaviours:EventTrigger EventName="MouseDoubleClick">
+                                    <behaviours:InvokeCommandAction Command="{Binding ComandoDobleClick}" PassEventArgsToCommand="True" />
+                                </behaviours:EventTrigger>
+                            </behaviours:Interaction.Triggers>
                             <syncfusion:SfDataGrid.Columns>
                                 <syncfusion:GridTextColumn MappingName="Nombre" />
                                 <syncfusion:GridTextColumn MappingName="Direccion" />

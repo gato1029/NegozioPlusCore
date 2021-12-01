@@ -1,49 +1,58 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
 using NegozioPlusCore.MVVM.Principal;
+using NegozioPlusCore.MVVM.Principal.VM;
 using NegozioPlusCore.NucleoRealm.Controladores;
 using NegozioPlusCore.NucleoRealm.Modelos;
 using NegozioPlusCore.Utilitarios;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace NegozioPlusCore.MVVM.Usuarios.VM
+
+namespace NegozioPlusCore.MVVM.Productos.VM
 {
-    class UsuarioUCVM : NotificadorGenerico
-    {        
-        private ObservableCollection<Usuario> coleccion;
+    class ProductoUCVM : NotificadorGenerico
+    {
+        private ObservableCollection<Producto> coleccion;
+        private ObservableCollection<CategoriaProducto> coleccionCategorias;
         private bool cargandoBusy;
-        private Usuario itemSeleccionado;
+        private Producto itemSeleccionado;
         public ICommand ComandoClickAgregar => new RelayCommand<Object>(ClickAgregar, (o) => { return true; });
-        public ICommand ComandoClickEliminar => new RelayCommand<Object>(ClickEliminar, (o) => { return true; });      
+        public ICommand ComandoClickEliminar => new RelayCommand<Object>(ClickEliminar, (o) => { return true; });
         public ICommand ComandoVentanaCargada => new RelayCommand<Object>(VentanaCargada, (o) => { return true; });
         public ICommand ComandoDobleClick => new RelayCommand<Object>(DobleClick, (o) => { return true; });
-       
+
         private async void VentanaCargada(object obj)
-        {                        
+        {
             CargandoBusy = true;
-            Coleccion = await UsuarioController.Instance.ObtenerTodo();
+            Coleccion = await ProductoController.Instance.ObtenerTodo();
+            ColeccionCategorias = await CategoriaProductoController.Instance.ObtenerTodo();
             CargandoBusy = false;
         }
         private async void ClickEliminar(object obj)
         {
             //luego creare una ventana personalizada
-            MessageBoxResult Result = System.Windows.MessageBox.Show("Estas Seguro de eliminar el usuario","Advertencia",MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult Result = System.Windows.MessageBox.Show("Estas Seguro de eliminar el producto", "Advertencia", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
-                await UsuarioController.Instance.Eliminar(itemSeleccionado);
+                await ProductoController.Instance.Eliminar(itemSeleccionado);
                 coleccion.Remove(itemSeleccionado);
-            }            
+            }
         }
         private void ClickAgregar(object obj)
         {
-            Usuario nuevo = new Usuario();
-            UsuarioVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<UsuarioVentana>("0", new UsuarioVentanaVM(nuevo));
+            Producto nuevo = new Producto();
+            ProductoVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<ProductoVentana>("0", new ProductoVentanaVM(nuevo, ColeccionCategorias));
             ventana.Owner = ServiceLocator.Instance.GetService<VentanaPrincipal>();
             ventana.Show();
         }
-        public void RefrescarGrid(Usuario nuevo) 
+        public void RefrescarGrid(Producto nuevo)
         { //sirve para el refresco desde la otra ventana
             coleccion.Add(nuevo);
         }
@@ -51,32 +60,35 @@ namespace NegozioPlusCore.MVVM.Usuarios.VM
         {
             if (itemSeleccionado != null)
             {
-                UsuarioVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<UsuarioVentana>(itemSeleccionado.Id.ToString(), new UsuarioVentanaVM(itemSeleccionado));
+                ProductoVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<ProductoVentana>(itemSeleccionado.Id.ToString(), new ProductoVentanaVM(itemSeleccionado, ColeccionCategorias));
                 ventana.Owner = ServiceLocator.Instance.GetService<VentanaPrincipal>();
                 ventana.Show();
             }
         }
-        public UsuarioUCVM()
-        {           
+        public ProductoUCVM()
+        {
         }
-     
-        public ObservableCollection<Usuario> Coleccion
+
+        public ObservableCollection<Producto> Coleccion
         {
             get { return this.coleccion; }
             set { SetValue(ref this.coleccion, value); }
+        }
+        public ObservableCollection<CategoriaProducto> ColeccionCategorias
+        {
+            get { return this.coleccionCategorias; }
+            set { SetValue(ref this.coleccionCategorias, value); }
         }
         public bool CargandoBusy
         {
             get { return this.cargandoBusy; }
             set { SetValue(ref this.cargandoBusy, value); }
         }
-        public Usuario ItemSeleccionado
+        public Producto ItemSeleccionado
         {
             get { return this.itemSeleccionado; }
             set { SetValue(ref this.itemSeleccionado, value); }
         }
-
-        public ObservableCollection<Usuario> Coleccion1 { get => coleccion; set => coleccion = value; }
 
     }
 }
