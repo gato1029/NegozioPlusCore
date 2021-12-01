@@ -1,4 +1,4 @@
-﻿using NegozioPlusCore.MVVM.Categorias.VM;
+﻿using NegozioPlusCore.MVVM.Empresa.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NegozioPlusCore.MVVM.Categorias
+namespace NegozioPlusCore.MVVM.Empresa
 {
     /// <summary>
-    /// Interaction logic for Categorias.xaml
+    /// Lógica de interacción para EmpresaUC.xaml
     /// </summary>
-    public partial class CategoriasUC : UserControl
+    public partial class EmpresaUC : UserControl
     {
-        public CategoriasUC()
+        public EmpresaUC()
         {
             InitializeComponent();
-            this.DataContext = new CategoriasUCVM();
+            this.DataContext = new EmpresaUCVM();
         }
     }
 }

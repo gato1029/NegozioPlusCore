@@ -13,8 +13,6 @@ namespace NegozioPlusCore.NucleoRealm.Modelos
         public ObjectId? Id { get; set; }
         [MapTo("descrip")]
         public string Descrip { get; set; }
-        [MapTo("habilitado")]
-        public bool? Habilitado { get; set; }
         [MapTo("idCatProd")]
         public CategoriaProducto IdCatProd { get; set; }
         [MapTo("idEmp")]
@@ -27,10 +25,8 @@ namespace NegozioPlusCore.NucleoRealm.Modelos
         public string Particion { get; set; }
         [MapTo("precio")]
         public double? Precio { get; set; }
-        [MapTo("reqAlmacen")]
-        public bool? ReqAlmacen { get; set; }
         [MapTo("unidad")]
         public string Unidad { get; set; }
     }
-
+ 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NegozioPlusCore.MVVM.Tiendas.VM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,21 +14,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NegozioPlusCore.MVVM.Productos
+namespace NegozioPlusCore.MVVM.Tiendas
 {
     /// <summary>
-    /// Interaction logic for ProductoVentana.xaml
+    /// Interaction logic for TiendasAgregar.xaml
     /// </summary>
-    public partial class ProductoVentana : Window
+    public partial class TiendasAgregar : Window
     {
         public bool IsClosed { get; private set; }
-        public ProductoVentana()
+        public TiendasAgregar()
         {
             InitializeComponent();
+            this.DataContext = new TiendasAgregarVM();
         }
-
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            IsClosed = true;
+        }
         private void BotonCerrar_Click(object sender, RoutedEventArgs e)
         {
+
             this.Close();
         }
 

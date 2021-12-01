@@ -1,4 +1,4 @@
-﻿using NegozioPlusCore.MVVM.Tiendas.VM;
+﻿using NegozioPlusCore.MVVM.Categorias.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,24 +11,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NegozioPlusCore.MVVM.Tiendas
+namespace NegozioPlusCore.MVVM.Categorias
 {
     /// <summary>
-    /// Interaction logic for TiendasAgregar.xaml
+    /// Interaction logic for CategoriasAgregar.xaml
     /// </summary>
-    public partial class TiendasVentana : Window
+    public partial class CategoriasAgregar : Window
     {
         public bool IsClosed { get; private set; }
-        public TiendasVentana()
+        public CategoriasAgregar()
         {
             InitializeComponent();
+            this.DataContext = new CategoriasAgregarVM();
         }
-
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            IsClosed = true;
+        }
         private void BotonCerrar_Click(object sender, RoutedEventArgs e)
         {
+
             this.Close();
         }
 

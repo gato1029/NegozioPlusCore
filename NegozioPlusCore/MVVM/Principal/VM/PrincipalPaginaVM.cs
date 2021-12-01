@@ -47,8 +47,8 @@ namespace NegozioPlusCore.MVVM.Principal.VM
             CargandoBusy = true;
             await Conectar();
             var usuarioData = ServiceLocator.Instance.GetService<UsuarioLogeado>();
-            Empresa emp = await EmpresaController.Instance.BuscarUno(usuarioData.idEmp.Value);
-            ServiceLocator.Instance.RegisterService<Empresa>(emp);
+            NucleoRealm.Modelos.Empresa emp = await EmpresaController.Instance.BuscarUno(usuarioData.idEmp.Value);
+            ServiceLocator.Instance.RegisterService(emp);
             CargandoBusy = false;
         }
 
