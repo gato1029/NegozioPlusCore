@@ -1,5 +1,6 @@
 ﻿using NegozioPlusCore.MVVM.Almacen;
 using NegozioPlusCore.MVVM.Categorias;
+using NegozioPlusCore.MVVM.Empresa;
 using NegozioPlusCore.MVVM.Principal.VM;
 using NegozioPlusCore.MVVM.Productos;
 using NegozioPlusCore.MVVM.Tiendas;
@@ -35,6 +36,7 @@ namespace NegozioPlusCore.Recursos
 
         private void CargarItems()
         {
+            AgregarItemMenu("Empresa", "/Recursos/Imagenes/home.png");
             AgregarItemMenu("Productos", "/Recursos/Imagenes/productos.png");
             AgregarItemMenu("Almacen", "/Recursos/Imagenes/almacen.png");
             AgregarItemMenu("Comprobantes", "/Recursos/Imagenes/comprobantes.png");
@@ -83,6 +85,12 @@ namespace NegozioPlusCore.Recursos
             {
                 switch (itemMenu)
                 {
+                    case "Empresa":
+                        if (!ServiceLocator.Instance.ExistService<EmpresaUC>())
+                        {
+                            ServiceLocator.Instance.RegisterService(new EmpresaUC());
+                        }
+                        return ServiceLocator.Instance.GetService<EmpresaUC>();
                     case "Usuarios":
                         if (!ServiceLocator.Instance.ExistService<UsuarioUC>())
                         {
