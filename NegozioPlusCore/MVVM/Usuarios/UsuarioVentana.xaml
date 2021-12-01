@@ -170,7 +170,7 @@
                         </syncfusion:SfTextInputLayout.LeadingView>
                         <syncfusion:ComboBoxAdv
                             AllowMultiSelect="True"
-                            AllowSelectAll="True"                           
+                            AllowSelectAll="True"
                             ItemsSource="{Binding CheckListModulos}"
                             SelectedItems="{Binding CheckListModulosSeleccionados, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </syncfusion:SfTextInputLayout>

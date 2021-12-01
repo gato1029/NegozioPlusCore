@@ -1,13 +1,10 @@
-﻿<Window x:Class="NegozioPlusCore.MVVM.Categorias.CategoriasVentana"
+﻿<Window x:Class="NegozioPlusCore.MVVM.Categorias.CategoriasAgregar"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Categorias"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-        xmlns:vm="[vm ]clr-namespace:NegozioPlusCore.MVVM.Categorias.VM"
-        x:Name="VentanaActual"
         Title="UsuarioVentana"
         Width="600"
         Height="600"
@@ -16,13 +13,6 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         mc:Ignorable="d">
-    
-    <behaviours:Interaction.Triggers>
-        <behaviours:EventTrigger EventName="Closed">
-            <behaviours:InvokeCommandAction Command="{Binding ComandoClickCerrar}" PassEventArgsToCommand="True" />
-        </behaviours:EventTrigger>
-    </behaviours:Interaction.Triggers>
-    
     <Border CornerRadius="10" Style="{DynamicResource BorderFondoBase}">
         <DockPanel LastChildFill="True">
             <Border
@@ -82,81 +72,29 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="150" />
-                        </Grid.ColumnDefinitions>
-                        <syncfusion:SfTextInputLayout
-                            Grid.Column="0"
-                            Visibility="{Binding SubCatVisible, Mode=TwoWay}"
-                            Margin="20,20,20,0"
-                            VerticalAlignment="Center"
-                            HelperText="Ingresa el nombre de la sub categoria"
-                            LeadingViewPosition="Inside"
-                            Style="{DynamicResource NormalTextInput}">
-                            <TextBox Padding="10" Text="{Binding SubCatNombre, Mode=TwoWay}" />
-                            <syncfusion:SfTextInputLayout.LeadingView>
-                                <Image Style="{DynamicResource ImgProductos}" />
-                            </syncfusion:SfTextInputLayout.LeadingView>
-                        </syncfusion:SfTextInputLayout>
-                        <Button
-                            Visibility="{Binding BotonSubCatVisible, Mode=TwoWay}"
-                            Grid.Column="1"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Command="{Binding ComandoClickAgregarSubCategoria}"
-                            Style="{DynamicResource BotonImagen}" 
-                            Height="100" 
-                            Margin="0,38,44,84" 
-                            Width="80">
-                            <Image Style="{DynamicResource ImgBotonAgregar}" />
-                        </Button>
-                    </Grid>
                     <syncfusion:SfTextInputLayout
                         Grid.Row="0"
                         Margin="20,20,20,0"
                         VerticalAlignment="Center"
-                        HelperText="Ingresa el nombre de la categoria padre"
-                        Hint="Categoria Padre"
+                        HelperText="Ingresa el nombre de la categoria"
+                        Hint="Categoria"
                         LeadingViewPosition="Inside"
                         Style="{DynamicResource NormalTextInput}">
-                        <TextBox IsReadOnly="{Binding CatPadreHabilitar}" Padding="10" Text="{Binding Nombre, Mode=TwoWay}" />
+                        <TextBox Padding="10" />
                         <syncfusion:SfTextInputLayout.LeadingView>
                             <Image Style="{DynamicResource ImgProductos}" />
                         </syncfusion:SfTextInputLayout.LeadingView>
                     </syncfusion:SfTextInputLayout>
-                    <!--syncfusion:SfTextInputLayout
-                        Grid.Row="1"
-                        Visibility="{Binding SubCatVisible, Mode=TwoWay}"
-                        Margin="20,20,20,0"
-                        VerticalAlignment="Center"
-                        HelperText="Selecciona a que modulos tendra acceso el usuario."
-                        Hint="Modulos"
-                        LeadingViewPosition="Inside"
-                        Style="{DynamicResource NormalTextInput}">
-                        <syncfusion:SfTextInputLayout.LeadingView>
-                            <Image Style="{DynamicResource ImgUsuarios}" />
-                        </syncfusion:SfTextInputLayout.LeadingView>
-                        <syncfusion:ComboBoxAdv
-                            AllowMultiSelect="True"
-                            AllowSelectAll="False"                           
-                            ItemsSource="{Binding CheckListModulos}"
-                            SelectedItems="{Binding CheckListModulosSeleccionados, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    </syncfusion:SfTextInputLayout-->
                     <syncfusion:ButtonAdv
-                        x:Name="button2"
+                        x:Name="button"
                         Grid.Row="4"
                         Margin="20"
                         HorizontalAlignment="Center"
                         Background="Transparent"
                         BorderBrush="Gray"
-                        Command="{Binding ComandoClickGuardar}"
-                        CommandParameter="{Binding ElementName=VentanaActual}"
                         FontSize="18"
                         IconHeight="50"
                         IconWidth="50"
