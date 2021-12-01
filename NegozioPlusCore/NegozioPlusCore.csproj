@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Realm.10.6.0\build\Realm.props" Condition="Exists('packages\Realm.10.6.0\build\Realm.props')" />
   <Import Project="packages\Realm.Fody.10.6.0\build\Realm.Fody.props" Condition="Exists('packages\Realm.Fody.10.6.0\build\Realm.Fody.props')" />
@@ -160,6 +160,7 @@
       <DependentUpon>ProductoVentana.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Productos\VM\ProductoVentanaVM.cs" />
+    <Compile Include="NucleoRealm\ControladoresMongo\TiendaControllerMongo.cs" />
     <Compile Include="NucleoRealm\Controladores\AlmacenController.cs" />
     <Compile Include="NucleoRealm\Controladores\BaseController.cs" />
     <Compile Include="NucleoRealm\Controladores\CategoriaProductoController.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="NucleoRealm\Controladores\ProductoController.cs" />
     <Compile Include="NucleoRealm\Controladores\TiendaController.cs" />
     <Compile Include="NucleoRealm\Controladores\UsuarioController.cs" />
+    <Compile Include="NucleoRealm\ModelosBson\TiendaMongo.cs" />
     <Compile Include="NucleoRealm\ModelosBson\UsuarioLogeado.cs" />
     <Compile Include="MVVM\Principal\VentanaPrincipal.xaml.cs">
       <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
