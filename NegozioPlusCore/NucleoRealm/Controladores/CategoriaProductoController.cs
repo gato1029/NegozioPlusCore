@@ -12,9 +12,24 @@ namespace NegozioPlusCore.NucleoRealm.Controladores
     {
         public static CategoriaProductoController Instance => _instance ?? (_instance = new CategoriaProductoController());
         private static CategoriaProductoController _instance;
-        public override Task Modificar(ObjectId idOriginal, CategoriaProducto datoNuevo)
+        public CategoriaProductoController(Particion particion) : base(particion)
         {
-            throw new NotImplementedException();
+
+        }
+
+        public CategoriaProductoController() : base()
+        {
+        }
+        public async override Task Modificar(ObjectId idOriginal, CategoriaProducto datoNuevo)
+        {
+            await Verificar(false);
+            particion._realm.Write(() =>
+            {
+                var data = particion._realm.Find<CategoriaProducto>(idOriginal);
+                data.Nombre = datoNuevo.Nombre;
+                //data.Categoria = datoNuevo.Categoria;
+                //data.Padre = datoNuevo.Padre;
+            });
         }
     }
 }

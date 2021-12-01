@@ -1,27 +1,28 @@
-﻿<Window
-    x:Class="NegozioPlusCore.MVVM.Usuarios.UsuarioVentana"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Usuarios"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-    xmlns:vmUsuarios="clr-namespace:NegozioPlusCore.MVVM.Usuarios.VM"
-    x:Name="VentanaActual"
-    Title="UsuarioVentana"
-    Width="600"
-    Height="600"
-    AllowsTransparency="True"
-    Background="{x:Null}"
-    WindowStartupLocation="CenterScreen"
-    WindowStyle="None"
-    mc:Ignorable="d">
+﻿<Window 
+        x:Class="NegozioPlusCore.MVVM.Productos.ProductoVentana"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:behaviours="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NegozioPlusCore.MVVM.Productos"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        x:Name="VentanaActual"
+        Title="ProductoVentana"
+        Width="800"
+        Height="800"
+        AllowsTransparency="True"
+        Background="{x:Null}"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        mc:Ignorable="d">
+
     <behaviours:Interaction.Triggers>
         <behaviours:EventTrigger EventName="Closed">
             <behaviours:InvokeCommandAction Command="{Binding ComandoClickCerrar}" PassEventArgsToCommand="True" />
         </behaviours:EventTrigger>
     </behaviours:Interaction.Triggers>
+
     <Border CornerRadius="10" Style="{DynamicResource BorderFondoBase}">
         <DockPanel LastChildFill="True">
             <Border
@@ -48,13 +49,13 @@
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
-                        <Image Style="{DynamicResource ImgUsuarios}" />
+                        <Image Style="{DynamicResource ImgProductos}" />
                         <TextBlock
                             Margin="10,0,0,0"
                             VerticalAlignment="Center"
                             FontSize="15"
                             Style="{DynamicResource FuenteBaseTextBlock}"
-                            Text="Usuario" />
+                            Text="Producto" />
                     </StackPanel>
                     <StackPanel
                         Grid.Column="2"
@@ -71,7 +72,6 @@
                             <Image Style="{DynamicResource ImgBotonCerrar}" />
                         </Button>
                     </StackPanel>
-
                 </Grid>
             </Border>
             <Border
@@ -85,98 +85,125 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="280" />
                         </Grid.ColumnDefinitions>
                         <syncfusion:SfTextInputLayout
-                            Grid.Column="0"
-                            Margin="20,20,20,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            ErrorText="Ingrese un usuario"
-                            HelperText="Ingresa un usuario Unico."
-                            Hint="Usuario:"
-                            LeadingViewPosition="Inside"
-                            Style="{DynamicResource NormalTextInput}">
-
-                            <TextBox Padding="10" Text="{Binding Usuario, Mode=TwoWay}" />
+                        Grid.Column="0"
+                        Margin="20,20,20,0"
+                        VerticalAlignment="Center"
+                        HelperText="Ingresa el nombre del producto"
+                        Hint="Nombre"
+                        LeadingViewPosition="Inside"
+                        Style="{DynamicResource NormalTextInput}">
+                            <TextBox Padding="10" Text="{Binding Nombre, Mode=TwoWay}" />
                             <syncfusion:SfTextInputLayout.LeadingView>
-                                <Image Style="{DynamicResource ImgUsuarios}" />
+                                <Image Style="{DynamicResource ImgProductos}" />
                             </syncfusion:SfTextInputLayout.LeadingView>
-
                         </syncfusion:SfTextInputLayout>
                         <CheckBox
                             Grid.Column="1"
                             Height="30"
                             Margin="0,0,20,0"
-                            HorizontalAlignment="Right"
+                            HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Content="Deshabilitado"
-                            IsChecked="False"
+                            IsChecked="{Binding Habilitado, Mode=TwoWay}"
                             Style="{StaticResource chkBullet}"
                             Tag="Habilitado"
-                            ToolTip="Indica si el usuario, esta habilitado." />
+                            ToolTip="Indica si el producto esta habilitado." />
                     </Grid>
-
-
+                    
                     <syncfusion:SfTextInputLayout
                         Grid.Row="1"
                         Margin="20,20,20,0"
                         VerticalAlignment="Center"
-                        HelperText="Ingresa el nombre del usuario."
-                        Hint="Nombre:"
+                        HelperText="Ingresa la descripcion del producto"
+                        Hint="Descripcion"
                         LeadingViewPosition="Inside"
                         Style="{DynamicResource NormalTextInput}">
-                        <TextBox Padding="10" Text="{Binding Nombre, Mode=TwoWay}" />
+                        <TextBox Padding="10" Text="{Binding Descripcion, Mode=TwoWay}" />
                         <syncfusion:SfTextInputLayout.LeadingView>
-                            <Image Style="{DynamicResource ImgUsuarios}" />
+                            <Image Style="{DynamicResource ImgProductos}" />
                         </syncfusion:SfTextInputLayout.LeadingView>
                     </syncfusion:SfTextInputLayout>
-
-
-                    <syncfusion:SfTextInputLayout
-                        Grid.Row="2"
-                        Margin="20,20,20,0"
-                        VerticalAlignment="Center"
-                        HelperText="Selecciona un cargo o ingresa uno nuevo."
-                        Hint="Cargo"
-                        LeadingViewPosition="Inside"
-                        Style="{DynamicResource NormalTextInput}">
-                        <TextBox Padding="10" Text="{Binding Cargo, Mode=TwoWay}" />
-                        <syncfusion:SfTextInputLayout.LeadingView>
-                            <Image Style="{DynamicResource ImgUsuarios}" />
-                        </syncfusion:SfTextInputLayout.LeadingView>
-                        <!--<ComboBox
-                            DisplayMemberPath="Nombre"
-                            IsEditable="True"
-                            ItemsSource="{Binding CheckListModulos}" />-->
-                    </syncfusion:SfTextInputLayout>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="280" />
+                        </Grid.ColumnDefinitions>
+                        <CheckBox
+                            Grid.Column="1"
+                            Height="30"
+                            Margin="0,0,20,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="Deshabilitado"                  
+                            IsChecked="{Binding ReqAlmacen, Mode=TwoWay}"
+                            Style="{StaticResource chkBullet}"
+                            Tag="Habilitado"
+                            ToolTip="Indica si el producto requiere almacen" />
+                        <syncfusion:SfTextInputLayout
+                            Grid.Column="0"
+                            Margin="20,20,20,0"
+                            VerticalAlignment="Center"
+                            HelperText="Ingresa el precio del producto"
+                            Hint="Precio"
+                            LeadingViewPosition="Inside"
+                            Style="{DynamicResource NormalTextInput}">
+                            <!--TextBox Padding="10" Text="{Binding Precio, Mode=TwoWay}" /-->
+                            <syncfusion:DoubleTextBox 
+                                MaximumNumberDecimalDigits="3"
+                                MinimumNumberDecimalDigits="2"
+                                Padding="10"
+                                Text="{Binding Precio, Mode=TwoWay}"/>
+                            <syncfusion:SfTextInputLayout.LeadingView>
+                                <Image Style="{DynamicResource ImgProductos}" />
+                            </syncfusion:SfTextInputLayout.LeadingView>
+                        </syncfusion:SfTextInputLayout>
+                    </Grid>
                     <syncfusion:SfTextInputLayout
                         Grid.Row="3"
                         Margin="20,20,20,0"
                         VerticalAlignment="Center"
-                        HelperText="Selecciona a que modulos tendra acceso el usuario."
-                        Hint="Modulos"
+                        HelperText="Ingresa la unidad de medida del producto"
+                        Hint="Unidad de Medida"
+                        LeadingViewPosition="Inside"
+                        Style="{DynamicResource NormalTextInput}">
+                        <TextBox Padding="10" Text="{Binding Unidad, Mode=TwoWay}" />
+                        <syncfusion:SfTextInputLayout.LeadingView>
+                            <Image Style="{DynamicResource ImgProductos}" />
+                        </syncfusion:SfTextInputLayout.LeadingView>
+                    </syncfusion:SfTextInputLayout>
+                    <syncfusion:SfTextInputLayout
+                        Grid.Row="4"
+                        Margin="20,20,20,0"
+                        VerticalAlignment="Center"
+                        HelperText="Seleccione la categoria a la cual pertenecera el producto"
+                        Hint="Categorias"
                         LeadingViewPosition="Inside"
                         Style="{DynamicResource NormalTextInput}">
                         <syncfusion:SfTextInputLayout.LeadingView>
-                            <Image Style="{DynamicResource ImgUsuarios}" />
+                            <Image Style="{DynamicResource ImgProductos}" />
                         </syncfusion:SfTextInputLayout.LeadingView>
                         <syncfusion:ComboBoxAdv
-                            AllowMultiSelect="True"
-                            AllowSelectAll="True"                           
+                            IsEditable="True"
+                            AutoCompleteMode="Suggest"
+                            AllowMultiSelect="False"
+                            AllowSelectAll="False"
+                            DisplayMemberPath="Categoria"
                             ItemsSource="{Binding CheckListModulos}"
                             SelectedItems="{Binding CheckListModulosSeleccionados, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </syncfusion:SfTextInputLayout>
                     <syncfusion:ButtonAdv
                         x:Name="button2"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         Margin="20"
                         HorizontalAlignment="Center"
                         Background="Transparent"
@@ -189,11 +216,9 @@
                         Label="Guardar"
                         SizeMode="Normal"
                         SmallIcon="/Recursos/Imagenes/guardar.png" />
-
-
                 </Grid>
             </Border>
-
         </DockPanel>
     </Border>
+
 </Window>

@@ -1,4 +1,4 @@
-﻿using NegozioPlusCore.MVVM.Almacen.VM;
+﻿using NegozioPlusCore.MVVM.Categorias.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,17 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NegozioPlusCore.MVVM.Almacen
+namespace NegozioPlusCore.MVVM.Categorias
 {
     /// <summary>
-    /// Interaction logic for Almacen.xaml
+    /// Interaction logic for Categorias.xaml
     /// </summary>
-    public partial class Almacen : UserControl
+    public partial class CategoriasUC : UserControl
     {
-        public Almacen()
+        public CategoriasUC()
         {
             InitializeComponent();
-            this.DataContext = new AlmacenVM();
+            this.DataContext = new CategoriasUCVM();
         }
     }
 }

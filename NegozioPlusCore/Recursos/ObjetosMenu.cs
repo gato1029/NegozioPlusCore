@@ -98,23 +98,23 @@ namespace NegozioPlusCore.Recursos
                         }
                         return ServiceLocator.Instance.GetService<UsuarioUC>();
                     case "Almacen":
-                        if (!ServiceLocator.Instance.ExistService<Almacen>())
+                        if (!ServiceLocator.Instance.ExistService<AlmacenUC>())
                         {
-                            ServiceLocator.Instance.RegisterService(new Almacen());
+                            ServiceLocator.Instance.RegisterService(new AlmacenUC());
                         }
-                        return ServiceLocator.Instance.GetService<Almacen>();
+                        return ServiceLocator.Instance.GetService<AlmacenUC>();
                     case "Productos":
-                        if (!ServiceLocator.Instance.ExistService<Producto>())
+                        if (!ServiceLocator.Instance.ExistService<ProductoUC>())
                         {
-                            ServiceLocator.Instance.RegisterService(new Producto());
+                            ServiceLocator.Instance.RegisterService(new ProductoUC());
                         }
-                        return ServiceLocator.Instance.GetService<Producto>();
+                        return ServiceLocator.Instance.GetService<ProductoUC>();
                     case "Tiendas":
-                        if (!ServiceLocator.Instance.ExistService<Tiendas>())
+                        if (!ServiceLocator.Instance.ExistService<TiendasUC>())
                         {
-                            ServiceLocator.Instance.RegisterService(new Tiendas());
+                            ServiceLocator.Instance.RegisterService(new TiendasUC());
                         }
-                        return ServiceLocator.Instance.GetService<Tiendas>();
+                        return ServiceLocator.Instance.GetService<TiendasUC>();
                     default:
                         break;
                 }
@@ -124,11 +124,11 @@ namespace NegozioPlusCore.Recursos
                 switch (itemMenu)
                 {
                     case "Categorias":
-                        if (!ServiceLocator.Instance.ExistService<Categorias>())
+                        if (!ServiceLocator.Instance.ExistService<CategoriasUC>())
                         {
-                            ServiceLocator.Instance.RegisterService(new Categorias());
+                            ServiceLocator.Instance.RegisterService(new CategoriasUC());
                         }
-                        return ServiceLocator.Instance.GetService<Categorias>();
+                        return ServiceLocator.Instance.GetService<CategoriasUC>();
                     default:
                         break;
                 }
