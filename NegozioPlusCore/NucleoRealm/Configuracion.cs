@@ -17,7 +17,7 @@ namespace NegozioPlusCore.NucleoRealm
         public Realms.Sync.App AppRealm;
         public User UsuarioRealm;
         MongoClient _mongoClient;
-        MongoClient.Database _databaseMongo;
+        public MongoClient.Database _databaseMongo;
 
         Dictionary<string, Particion> _particiones;
         static Configuracion _instancia = null;
@@ -59,7 +59,9 @@ namespace NegozioPlusCore.NucleoRealm
         {
             try
             {
+               
                 _mongoClient = UsuarioRealm.GetMongoClient(_cluster);
+                
                 _databaseMongo = _mongoClient.GetDatabase(_mongoDB);
             }
             catch (Exception e)

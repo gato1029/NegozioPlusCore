@@ -13,6 +13,8 @@ namespace NegozioPlusCore.NucleoRealm.Modelos
         [PrimaryKey]
         [MapTo("_id")]
         public ObjectId? Id { get; set; }
+        [MapTo("almacenes")]
+        public IList<Empresa_almacenes> Almacenes { get; }
         [MapTo("descripcion")]
         public string Descripcion { get; set; }
         [MapTo("direccion")]
@@ -35,6 +37,8 @@ namespace NegozioPlusCore.NucleoRealm.Modelos
         [MapTo("tags")]
         [Required]
         public IList<string> Tags { get; }
+        [MapTo("tiendas")]
+        public IList<Empresa_tiendas> Tiendas { get; }
         [MapTo("ultFechaPago")]
         public DateTimeOffset? UltFechaPago { get; set; }
     }

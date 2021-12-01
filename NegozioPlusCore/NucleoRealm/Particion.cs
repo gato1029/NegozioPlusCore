@@ -31,6 +31,8 @@ namespace NegozioPlusCore.NucleoRealm
             try
             {
                 _syncConfig = new SyncConfiguration(_particion, _inicioGlobal.AppRealm.CurrentUser);
+                MessageBox.Show("PathRealm"+_syncConfig.DatabasePath);
+                string ruta = _syncConfig.DatabasePath;
                 _realm = await Realms.Realm.GetInstanceAsync(_syncConfig);
                 /*   user = userRealm.Find<User>(App.RealmApp.CurrentUser.Id);
 
@@ -60,7 +62,7 @@ namespace NegozioPlusCore.NucleoRealm
             }
             catch (Exception ex)
             {
-                 MessageBox.Show("Particion no encontrada");
+                 MessageBox.Show("Particion no encontrada"+ ex.InnerException);
             }
         }
         public void cerrar()

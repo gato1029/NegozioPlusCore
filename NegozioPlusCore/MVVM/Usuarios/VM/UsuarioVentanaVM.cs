@@ -36,7 +36,7 @@ namespace NegozioPlusCore.MVVM.Usuarios.VM
             if (usuarioRealm.Id==null) // indica que es nuevo
             {              
                 usuarioRealm.Id = ObjectId.GenerateNewId();
-                usuarioRealm.IdEmp = ServiceLocator.Instance.GetService<Empresa>();
+                usuarioRealm.IdEmp = ServiceLocator.Instance.GetService<NucleoRealm.Modelos.Empresa>();
                 usuarioRealm.Nombre = nombre;
                 usuarioRealm.Rol = cargo;
                 usuarioRealm.UsuarioLocal = usuario;
