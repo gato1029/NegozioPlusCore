@@ -1,49 +1,54 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
 using NegozioPlusCore.MVVM.Principal;
+using NegozioPlusCore.MVVM.Principal.VM;
 using NegozioPlusCore.NucleoRealm.Controladores;
-using NegozioPlusCore.NucleoRealm.Modelos;
 using NegozioPlusCore.Utilitarios;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace NegozioPlusCore.MVVM.Usuarios.VM
+
+namespace NegozioPlusCore.MVVM.Almacen.VM
 {
-    class UsuarioUCVM : NotificadorGenerico
-    {        
-        private ObservableCollection<Usuario> coleccion;
+    class AlmacenUCVM : NotificadorGenerico
+    {
+        private ObservableCollection<NucleoRealm.Modelos.Almacen> coleccion;
         private bool cargandoBusy;
-        private Usuario itemSeleccionado;
+        private NucleoRealm.Modelos.Almacen itemSeleccionado;
         public ICommand ComandoClickAgregar => new RelayCommand<Object>(ClickAgregar, (o) => { return true; });
-        public ICommand ComandoClickEliminar => new RelayCommand<Object>(ClickEliminar, (o) => { return true; });      
+        public ICommand ComandoClickEliminar => new RelayCommand<Object>(ClickEliminar, (o) => { return true; });
         public ICommand ComandoVentanaCargada => new RelayCommand<Object>(VentanaCargada, (o) => { return true; });
         public ICommand ComandoDobleClick => new RelayCommand<Object>(DobleClick, (o) => { return true; });
-       
         private async void VentanaCargada(object obj)
-        {                        
+        {
             CargandoBusy = true;
-            Coleccion = await UsuarioController.Instance.ObtenerTodo();
+            Coleccion = await AlmacenController.Instance.ObtenerTodo();
             CargandoBusy = false;
         }
         private async void ClickEliminar(object obj)
         {
             //luego creare una ventana personalizada
-            MessageBoxResult Result = System.Windows.MessageBox.Show("Estas Seguro de eliminar el usuario","Advertencia",MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult Result = System.Windows.MessageBox.Show("Estas Seguro de eliminar el almacen", "Advertencia", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
-                await UsuarioController.Instance.Eliminar(itemSeleccionado);
+                await AlmacenController.Instance.Eliminar(itemSeleccionado);
                 coleccion.Remove(itemSeleccionado);
-            }            
+            }
         }
         private void ClickAgregar(object obj)
         {
-            Usuario nuevo = new Usuario();
-            UsuarioVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<UsuarioVentana>("0", new UsuarioVentanaVM(nuevo));
+            NucleoRealm.Modelos.Almacen nuevo = new NucleoRealm.Modelos.Almacen();
+            AlmacenVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<AlmacenVentana>("0", new AlmacenVentanaVM(nuevo));
             ventana.Owner = ServiceLocator.Instance.GetService<VentanaPrincipal>();
             ventana.Show();
         }
-        public void RefrescarGrid(Usuario nuevo) 
+        public void RefrescarGrid(NucleoRealm.Modelos.Almacen nuevo)
         { //sirve para el refresco desde la otra ventana
             coleccion.Add(nuevo);
         }
@@ -51,16 +56,16 @@ namespace NegozioPlusCore.MVVM.Usuarios.VM
         {
             if (itemSeleccionado != null)
             {
-                UsuarioVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<UsuarioVentana>(itemSeleccionado.Id.ToString(), new UsuarioVentanaVM(itemSeleccionado));
+                AlmacenVentana ventana = AdministradorVentanas.Instance.RegistrarVentana<AlmacenVentana>(itemSeleccionado.Id.ToString(), new AlmacenVentanaVM(itemSeleccionado));
                 ventana.Owner = ServiceLocator.Instance.GetService<VentanaPrincipal>();
                 ventana.Show();
             }
         }
-        public UsuarioUCVM()
-        {           
+        public AlmacenUCVM()
+        {
         }
-     
-        public ObservableCollection<Usuario> Coleccion
+
+        public ObservableCollection<NucleoRealm.Modelos.Almacen> Coleccion
         {
             get { return this.coleccion; }
             set { SetValue(ref this.coleccion, value); }
@@ -70,13 +75,10 @@ namespace NegozioPlusCore.MVVM.Usuarios.VM
             get { return this.cargandoBusy; }
             set { SetValue(ref this.cargandoBusy, value); }
         }
-        public Usuario ItemSeleccionado
+        public NucleoRealm.Modelos.Almacen ItemSeleccionado
         {
             get { return this.itemSeleccionado; }
             set { SetValue(ref this.itemSeleccionado, value); }
         }
-
-        public ObservableCollection<Usuario> Coleccion1 { get => coleccion; set => coleccion = value; }
-
     }
 }
