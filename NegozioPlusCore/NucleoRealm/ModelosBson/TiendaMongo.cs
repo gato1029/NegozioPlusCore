@@ -41,6 +41,6 @@ namespace NegozioPlusCore.NucleoRealm.ModelosBson
         [BsonElement("tipo")]
         public string tipo { get; set; }
 
-      
+      //ModuloEmpresa
     }
 }
