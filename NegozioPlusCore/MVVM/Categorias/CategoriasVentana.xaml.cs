@@ -11,20 +11,32 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace NegozioPlusCore.MVVM.Categorias
 {
     /// <summary>
-    /// Interaction logic for Categorias.xaml
+    /// Interaction logic for CategoriasAgregar.xaml
     /// </summary>
-    public partial class Categorias : UserControl
+    public partial class CategoriasVentana : Window
     {
-        public Categorias()
+        public bool IsClosed { get; private set; }
+        public CategoriasVentana()
         {
             InitializeComponent();
-            this.DataContext = new CategoriasVM();
+        }
+
+        private void BotonCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BarraTop_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
     }
 }

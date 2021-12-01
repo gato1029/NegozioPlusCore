@@ -18,18 +18,11 @@ namespace NegozioPlusCore.MVVM.Almacen
     /// <summary>
     /// Interaction logic for AlmacenAgregar.xaml
     /// </summary>
-    public partial class AlmacenAgregar : Window
+    public partial class AlmacenVentana : Window
     {
-        public bool IsClosed { get; private set; }
-        public AlmacenAgregar()
+        public AlmacenVentana()
         {
-            InitializeComponent();
-            this.DataContext = new AlmacenAgregarVM();
-        }
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-            IsClosed = true;
+            InitializeComponent();         
         }
         private void BotonCerrar_Click(object sender, RoutedEventArgs e)
         {
