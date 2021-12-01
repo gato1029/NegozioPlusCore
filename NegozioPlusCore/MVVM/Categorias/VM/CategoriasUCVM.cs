@@ -42,7 +42,7 @@ namespace NegozioPlusCore.MVVM.Categorias.VM
                 int index = Coleccion.IndexOf(itemSeleccionado);
                 //coleccion.Remove(itemSeleccionado);
                 await CategoriaProductoController.Instance.Eliminar(itemSeleccionado);
-                coleccion.RemoveAt(index);
+                coleccion.RemoveAt(index);   
             }
         }
         private void ClickAgregar(object obj)
@@ -53,7 +53,7 @@ namespace NegozioPlusCore.MVVM.Categorias.VM
             ventana.Show();
         }
         public void RefrescarGrid(CategoriaProducto nuevo)
-        { //sirve para el refresco desde la otra ventana
+        { //sirve para el refresco desde la otra ventanaxd
             coleccion.Add(nuevo);
         }
         private void DobleClick(object obj)
