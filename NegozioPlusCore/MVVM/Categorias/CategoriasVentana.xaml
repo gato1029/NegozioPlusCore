@@ -86,31 +86,46 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="150" />
+                        </Grid.ColumnDefinitions>
+                        <syncfusion:SfTextInputLayout
+                            Grid.Column="0"
+                            Visibility="{Binding SubCatVisible, Mode=TwoWay}"
+                            Margin="20,20,20,0"
+                            VerticalAlignment="Center"
+                            HelperText="Ingresa el nombre de la sub categoria"
+                            LeadingViewPosition="Inside"
+                            Style="{DynamicResource NormalTextInput}">
+                            <TextBox Padding="10" Text="{Binding SubCatNombre, Mode=TwoWay}" />
+                            <syncfusion:SfTextInputLayout.LeadingView>
+                                <Image Style="{DynamicResource ImgProductos}" />
+                            </syncfusion:SfTextInputLayout.LeadingView>
+                        </syncfusion:SfTextInputLayout>
+                        <Button
+                            Visibility="{Binding BotonSubCatVisible, Mode=TwoWay}"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Command="{Binding ComandoClickAgregarSubCategoria}"
+                            Style="{DynamicResource BotonImagen}" 
+                            Height="100" 
+                            Margin="0,38,44,84" 
+                            Width="80">
+                            <Image Style="{DynamicResource ImgBotonAgregar}" />
+                        </Button>
+                    </Grid>
                     <syncfusion:SfTextInputLayout
                         Grid.Row="0"
                         Margin="20,20,20,0"
                         VerticalAlignment="Center"
-                        HelperText="Ingresa el nombre de la categoria"
-                        Hint="Categoria"
+                        HelperText="Ingresa el nombre de la categoria padre"
+                        Hint="Categoria Padre"
                         LeadingViewPosition="Inside"
                         Style="{DynamicResource NormalTextInput}">
-                        <TextBox Padding="10" Text="{Binding Nombre, Mode=TwoWay}" />
-                        <syncfusion:SfTextInputLayout.LeadingView>
-                            <Image Style="{DynamicResource ImgProductos}" />
-                        </syncfusion:SfTextInputLayout.LeadingView>
-                    </syncfusion:SfTextInputLayout>
-                    <syncfusion:SfTextInputLayout
-                        Grid.Row="1"
-                        Visibility="{Binding SubCatVisible, Mode=TwoWay}"
-                        
-                        Margin="20,20,20,0"
-                        
-                        VerticalAlignment="Center"
-                        HelperText="Padre de la categoria"
-                        
-                        LeadingViewPosition="Inside"
-                        Style="{DynamicResource NormalTextInput}">
-                        <TextBox IsReadOnly="True" Padding="10" Text="{Binding Padre, Mode=TwoWay}" />
+                        <TextBox IsReadOnly="{Binding CatPadreHabilitar}" Padding="10" Text="{Binding Nombre, Mode=TwoWay}" />
                         <syncfusion:SfTextInputLayout.LeadingView>
                             <Image Style="{DynamicResource ImgProductos}" />
                         </syncfusion:SfTextInputLayout.LeadingView>

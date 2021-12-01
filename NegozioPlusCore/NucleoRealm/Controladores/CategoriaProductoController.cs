@@ -27,8 +27,8 @@ namespace NegozioPlusCore.NucleoRealm.Controladores
             {
                 var data = particion._realm.Find<CategoriaProducto>(idOriginal);
                 data.Nombre = datoNuevo.Nombre;
-                data.Categoria = datoNuevo.Categoria;
-                data.Padre = datoNuevo.Padre;
+                //data.Categoria = datoNuevo.Categoria;
+                //data.Padre = datoNuevo.Padre;
             });
         }
     }

@@ -39,8 +39,10 @@ namespace NegozioPlusCore.MVVM.Categorias.VM
             MessageBoxResult Result = System.Windows.MessageBox.Show("Estas Seguro de eliminar la categoria", "Advertencia", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
+                int index = Coleccion.IndexOf(itemSeleccionado);
+                //coleccion.Remove(itemSeleccionado);
                 await CategoriaProductoController.Instance.Eliminar(itemSeleccionado);
-                coleccion.Remove(itemSeleccionado);
+                coleccion.RemoveAt(index);
             }
         }
         private void ClickAgregar(object obj)
